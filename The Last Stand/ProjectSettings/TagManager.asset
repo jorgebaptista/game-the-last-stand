@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Tower
+  - Enemy
+  - Enemy Spawner
+  - Trap
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Manager
+  - Ground
+  - Tower
+  - Enemy
+  - Player Attack
+  - Enemy Attack
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 3178974717
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 3942397199
+    locked: 0
+  - name: Tower
+    uniqueID: 2830732165
+    locked: 0
+  - name: Ballista
+    uniqueID: 31486045
+    locked: 0
+  - name: Enemy
+    uniqueID: 2482658819
+    locked: 0
+  - name: Projectile
+    uniqueID: 4103568085
+    locked: 0
+  - name: Grass Ft
+    uniqueID: 1465839023
+    locked: 0
+  - name: UI
+    uniqueID: 2529140949
+    locked: 0
