@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PauseMenuScript : MonoBehaviour
+public class PauseScript : MonoBehaviour
 {
     private void OnEnable()
-    {       
+    {
         Time.timeScale = 0f;
+        GameManagerScript.isPaused = true;
     }
     private void OnDisable()
     {
         Time.timeScale = 1f;
-    }
-    public void QuitGame()
-    {
-        Application.Quit();
+        GameManagerScript.isPaused = false;
     }
 }

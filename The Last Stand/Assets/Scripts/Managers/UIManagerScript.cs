@@ -5,32 +5,36 @@ using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour
 {
-    [Header("HUD Settings")]
+    [Header("HUD - Lifebar")]
     [Space]
     [SerializeField]
     private Image lifeBarImage;
     [SerializeField]
     private float lifeBarSpeed = 1f;
 
+    [Header("HUD - Ammo")]
+    [Space]
     [Space]
     [SerializeField]
     private Image[] ammoImages;
 
+    [Header("HUD - Wave")]
+    [Space]
     [Space]
     [SerializeField]
     private Text waveText;
     [SerializeField]
-    private Text moneyText;
-
-    [Space]
-    [SerializeField]
-    private GameObject pauseMenu;
-
-    [Space]
-    [SerializeField]
     private Text[] timerText;
 
-    private bool isPaused = false;
+    [Header("HUD - Money")]
+    [Space]
+    [SerializeField]
+    private Text moneyText;
+
+    [Header("Pause Menu")]
+    [Space]
+    [SerializeField]
+    private GameObject pauseCanvas;
 
     public static UIManagerScript instance;
 
@@ -45,26 +49,15 @@ public class UIManagerScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     private void Update()
     {
         if (Input.GetButtonDown("Pause"))
         {
-            if (!isPaused)
+            if (!GameManagerScript.isPaused)
             {
-                pauseMenu.SetActive(true);
+                pauseCanvas.SetActive(true);
             }
-            else
-            {
-                pauseMenu.SetActive(false);
-            }
-            isPaused = !isPaused;
         }
-    }
-
-    public void UpdatePause(bool enabled)
-    {
-        isPaused = enabled;
     }
 
     public void UpdatePlayerLifeBar(float lifePointsPercentage)
@@ -80,6 +73,7 @@ public class UIManagerScript : MonoBehaviour
         }
         yield return null;
     }
+
     public void UpdateAmmoImages(int currentAmmo)
     {
         for (int i = 0; i < ammoImages.Length; i++)
@@ -104,7 +98,6 @@ public class UIManagerScript : MonoBehaviour
     {
         waveText.text = wave.ToString();
     }
-
     public void UpdateTimer(int time)
     {
         for(int i = 0; i < timerText.Length; ++i)
@@ -112,5 +105,4 @@ public class UIManagerScript : MonoBehaviour
             timerText[i].text = time.ToString();
         }
     }
-
 }

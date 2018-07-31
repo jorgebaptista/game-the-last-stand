@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
-    private int currentMoney = 0;
+    public static int currentMoney = 0;
+
+    public static bool isPaused = false;
 
     public static GameManagerScript instance;
-
-    //DEBUG
-    public bool gameIsOn = false;
 
     private void Awake()
     {
@@ -27,10 +26,6 @@ public class GameManagerScript : MonoBehaviour
     {
         currentMoney += money;
         UIManagerScript.instance.UpdateMoneyText(currentMoney);
-    }
-    public int GetMoney()
-    {
-        return currentMoney;
     }
 
     public void GameOver()

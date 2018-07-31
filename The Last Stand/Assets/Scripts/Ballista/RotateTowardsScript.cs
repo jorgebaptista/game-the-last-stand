@@ -7,35 +7,37 @@ public class RotateTowardsScript : MonoBehaviour
     [Header("Settings")]
     [Space]
     [SerializeField]
+    private bool faceToMouse = false;
+    [SerializeField]
+    private Transform target = null;
+
+    [Space]
+    [SerializeField]
+    private float pivotOffset = 0f;
+
+    [Header("Speed")]
+    [Space]
+    [SerializeField]
     private bool hasRotationSpeed = false;
     [SerializeField]
     private float rotationSpeed = 100f;
 
-    [Space]
-    [SerializeField]
-    private float pivotOffset = 0.29f;
+    private Vector3 faceTo;
 
-    [Header("Limits")]
-    [Space]
-    [SerializeField]
-    private bool hasRotationLimit = false;
+    private bool isFacingRight = true;
 
-    [Space]
-    [SerializeField]
-    private float maxRotationLeft = 220f;
-    [SerializeField]
-    private float maxRotationRight = 320f;
+    private SpriteRenderer mySpriteRenderer;
 
-
-    [Header("Rotation Properties")]
-    private Vector2 faceTo;
-    private Vector3 vector_difference;
+    private void Awake()
+    {
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
-        if (Time.timeScale == 1 && GameManagerScript.instance.gameIsOn == true)        
+        if (!GameManagerScript.isPaused)
         {
-            faceTo = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            Vector3 faceTo = faceToMouse == true ? Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position : target.position;
 
             float angle = Mathf.Atan2(faceTo.y - pivotOffset, faceTo.x) * Mathf.Rad2Deg;
             Quaternion currentRotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -43,8 +45,17 @@ public class RotateTowardsScript : MonoBehaviour
 
             transform.localEulerAngles = currentAngleRotation;
 
-
-            //transform.eulerAngles = new Vector3(0, 0, 200f);
+            if ((Input.mousePosition.x < Camera.main.WorldToScreenPoint(transform.position).x && isFacingRight) 
+                || Input.mousePosition.x > Camera.main.WorldToScreenPoint(transform.position).x && !isFacingRight)
+            {
+                Flip();
+            }
         }
+    }
+
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        mySpriteRenderer.flipY = !mySpriteRenderer.flipY;
     }
 }

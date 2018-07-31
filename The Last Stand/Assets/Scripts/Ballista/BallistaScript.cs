@@ -33,12 +33,10 @@ public class BallistaScript : MonoBehaviour
 
     [Header("Other")]
     [Space]
-    private GameManagerScript gameManager;
     private PoolManager poolManager;
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManagerScript>();
         poolManager = FindObjectOfType<PoolManager>();
 
         isAlive = true;
@@ -50,27 +48,8 @@ public class BallistaScript : MonoBehaviour
     }
     private void Update()
     {
-        if (isAlive && Time.timeScale == 1 && GameManagerScript.instance.gameIsOn == true)
+        if (isAlive && !GameManagerScript.isPaused)
         {
-            //if (hasRotationLimit)
-            //{
-            //    if (mouseDirection.x <= transform.position.x)
-            //    {
-            //        if (currentAngleRotation.z > maxRotationLeft)
-            //        {
-            //            currentAngleRotation.z = maxRotationLeft;
-            //        }
-            //    }
-            //    else if (mouseDirection.y < transform.position.y)
-            //    {
-            //        if (currentAngleRotation.z < maxRotationRight)
-            //        {
-            //            currentAngleRotation.z = maxRotationRight;
-            //        }
-            //    }
-            //}
-            //rotationPoint.transform.localEulerAngles = currentAngleRotation;
-
             if ((Input.GetButtonDown("Fire1")) && (!isReloading) && (currentAmmo > 0))
             {
                 bullet = poolManager.GetAvaiableBullet();
@@ -101,7 +80,7 @@ public class BallistaScript : MonoBehaviour
     private void Die()
     {
         isAlive = false;
-        gameManager.GameOver();
+        //*********************
     }
     private void UpdateLifeBarUI()
     {

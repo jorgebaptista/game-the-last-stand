@@ -120,7 +120,7 @@ public class WaveManager : MonoBehaviour
     private IEnumerator RunWave()
     {
         //*********************
-        GameManagerScript.instance.gameIsOn = true;
+        //GameManagerScript.instance.gameIsOn = true;
 
         UpdateWaveTextUI(currentWave);
 
@@ -181,7 +181,7 @@ public class WaveManager : MonoBehaviour
     private IEnumerator WaitBeforeWaveStart()
     {
         //*********************
-        GameManagerScript.instance.gameIsOn = false;
+        //GameManagerScript.instance.gameIsOn = false;
 
         currentWaveTimer = waveTimer;
 
