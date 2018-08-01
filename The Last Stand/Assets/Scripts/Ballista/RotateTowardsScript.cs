@@ -13,7 +13,9 @@ public class RotateTowardsScript : MonoBehaviour
 
     [Space]
     [SerializeField]
-    private float pivotOffset = 0f;
+    private float pivotOffset = 0.19f;
+    [SerializeField]
+    private Transform shootPoint;
 
     [Header("Speed")]
     [Space]
@@ -23,9 +25,7 @@ public class RotateTowardsScript : MonoBehaviour
     private float rotationSpeed = 100f;
 
     private Vector3 faceTo;
-
     private bool isFacingRight = true;
-
     private SpriteRenderer mySpriteRenderer;
 
     private void Awake()
@@ -57,5 +57,9 @@ public class RotateTowardsScript : MonoBehaviour
     {
         isFacingRight = !isFacingRight;
         mySpriteRenderer.flipY = !mySpriteRenderer.flipY;
+
+        Vector2 shootPointPos = shootPoint.localPosition;
+        shootPointPos.y *= -1;
+        shootPoint.localPosition = shootPointPos;
     }
 }

@@ -18,7 +18,7 @@ public class BallistaScript : MonoBehaviour
     [SerializeField]
     private float shootingForce = 1000f;
     [SerializeField]
-    private Transform shootingPoint;
+    private Transform shootPoint;
 
     [Header("Player Properties")]
     [Space]
@@ -90,10 +90,10 @@ public class BallistaScript : MonoBehaviour
 
     private void Shoot()
     {
-        bullet.transform.position = shootingPoint.position;
-        bullet.transform.rotation = shootingPoint.rotation;
+        bullet.transform.position = shootPoint.position;
+        bullet.transform.rotation = shootPoint.rotation;
         bullet.SetActive(true);
-        bullet.GetComponent<Rigidbody2D>().AddForce(shootingPoint.up * shootingForce);
+        bullet.GetComponent<Rigidbody2D>().AddForce(shootPoint.up * shootingForce);
 
         currentAmmo--;
         UpdateAmmoUI();

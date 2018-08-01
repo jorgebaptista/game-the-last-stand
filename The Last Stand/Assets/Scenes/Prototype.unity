@@ -580,21 +580,6 @@ Prefab:
       propertyPath: m_Name
       value: Ballista
       objectReference: {fileID: 0}
-    - target: {fileID: 114352950501228622, guid: 5ccaae9f00033fb4998b0ba502f73c42,
-        type: 2}
-      propertyPath: faceToMouse
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114352950501228622, guid: 5ccaae9f00033fb4998b0ba502f73c42,
-        type: 2}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114352950501228622, guid: 5ccaae9f00033fb4998b0ba502f73c42,
-        type: 2}
-      propertyPath: pivotOffset
-      value: 0.29
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ccaae9f00033fb4998b0ba502f73c42, type: 2}
   m_IsPrefabAsset: 0
