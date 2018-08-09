@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InfiniteBGScript : ScrollScript
+public class InfiniteBGScript : ScrollParentScript
 {
     private Sprite mySprite;
     private float spriteRealWidth;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ScrollingObjectScript : ScrollScript
+public class ScrollingObjectScript : ScrollParentScript
 {
     [SerializeField]
     public bool repeat = true;

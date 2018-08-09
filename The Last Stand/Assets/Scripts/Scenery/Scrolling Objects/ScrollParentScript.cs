@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScrollScript : MonoBehaviour
+public class ScrollParentScript : MonoBehaviour
 {
     [Header("Scrolling")]
     [Space]
