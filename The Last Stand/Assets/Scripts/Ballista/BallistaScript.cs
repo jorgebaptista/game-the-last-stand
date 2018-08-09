@@ -29,22 +29,24 @@ public class BallistaScript : MonoBehaviour
     private int currentAmmo;
 
     private Vector2 mouseDirection;
+    //************************************
+    [SerializeField]
+    private GameObject bulletPrefab;
     private GameObject bullet;
 
-    [Header("Other")]
-    [Space]
-    private PoolManager poolManager;
+    private int bulletPoolIndex;
 
     private void Start()
     {
-        poolManager = FindObjectOfType<PoolManager>();
-
         isAlive = true;
         currentLifePoints = lifePoints;
         currentAmmo = ammo;
 
         UpdateLifeBarUI();
         UpdateAmmoUI();
+
+        //*******
+        bulletPoolIndex = PoolManagerScript.instance.PreCache(bulletPrefab, 2);
     }
     private void Update()
     {
@@ -52,7 +54,7 @@ public class BallistaScript : MonoBehaviour
         {
             if ((Input.GetButtonDown("Fire1")) && (!isReloading) && (currentAmmo > 0))
             {
-                bullet = poolManager.GetAvaiableBullet();
+                bullet = PoolManagerScript.instance.GetCachedPrefab(bulletPoolIndex);
                 if (bullet != null)
                 {
                     Shoot();

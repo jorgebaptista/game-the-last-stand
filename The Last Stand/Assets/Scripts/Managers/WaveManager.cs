@@ -54,10 +54,6 @@ public class WaveManager : MonoBehaviour
     private GameObject[] enemySpawners;
     private int spawnerIndex;
 
-    [Header("Other References")]
-    private GameManagerScript gameManager;
-    private PoolManager poolManager;
-
     [Header("Debug")]
     [SerializeField]
     private GameObject[] timerObjects;
@@ -66,9 +62,6 @@ public class WaveManager : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = FindObjectOfType<GameManagerScript>();
-        poolManager = FindObjectOfType<PoolManager>();
-
         enemySpawners = GameObject.FindGameObjectsWithTag("Enemy Spawner");
     }
     private void Start()
@@ -105,7 +98,7 @@ public class WaveManager : MonoBehaviour
             currentMaxEnemies += addMaxEnemies;
             currentEnemyDelay -= subEnemyTimer;
 
-            allEnemiesInPool = poolManager.GetAllEnemiesInPool();
+            //allEnemiesInPool = PoolManagerScript.instance.GetAllEnemiesInPool();
 
             for (int enemyIndex = 0; enemyIndex < allEnemiesInPool.Length; ++enemyIndex)
             {
@@ -139,7 +132,7 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSeconds(enemyDelay);
             if (Random.value > .50)
             {
-                avaiableEnemy = poolManager.GetAvaiableEnemy();
+                //avaiableEnemy = poolManager.GetAvaiableEnemy();
             }
             else
             {

@@ -17,12 +17,12 @@ TagManager:
   - UI
   - 
   - 
-  - Manager
   - Ground
-  - Tower
+  - Ballista
+  - Ballista Attack
   - Enemy
-  - Player Attack
   - Enemy Attack
+  - 
   - 
   - 
   - 
@@ -48,12 +48,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Foreground
-    uniqueID: 3942397199
-    locked: 0
-  - name: Tower
-    uniqueID: 2830732165
-    locked: 0
   - name: Ballista
     uniqueID: 31486045
     locked: 0
@@ -63,9 +57,6 @@ TagManager:
   - name: Projectile
     uniqueID: 4103568085
     locked: 0
-  - name: Grass Ft
-    uniqueID: 1465839023
-    locked: 0
-  - name: UI
-    uniqueID: 2529140949
+  - name: Foreground
+    uniqueID: 3942397199
     locked: 0

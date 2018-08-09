@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolManagerScript : MonoBehaviour
 {
     private int childIndex = 0;
-
     private List<GameObject> prefabList = new List<GameObject>();
 
     public static PoolManagerScript instance;
@@ -25,7 +23,7 @@ public class PoolManagerScript : MonoBehaviour
     public int PreCache(GameObject prefab, int initialAmmount = 4)
     {
         int poolIndex = childIndex++;
-        prefabList.Insert(poolIndex ,prefab);
+        prefabList.Insert(poolIndex, prefab);
 
         int currentSortingOrder = 0;
 
@@ -35,6 +33,7 @@ public class PoolManagerScript : MonoBehaviour
         {
             GameObject cachedPrefab = Instantiate(prefab, transform.GetChild(poolIndex));
             cachedPrefab.GetComponent<SpriteRenderer>().sortingOrder = currentSortingOrder++;
+            cachedPrefab.SetActive(false);
         }
 
         return poolIndex;
