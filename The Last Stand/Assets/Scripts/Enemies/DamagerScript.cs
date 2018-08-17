@@ -20,7 +20,7 @@ public class DamagerScript : MonoBehaviour
             {
                 ballistaScript = other.GetComponentInChildren<BallistaScript>();
             }
-            ballistaScript.TakeDamage(damage);            
+            //ballistaScript.TakeDamage(damage);            
         }
     }
 }

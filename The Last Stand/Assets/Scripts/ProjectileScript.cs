@@ -8,11 +8,7 @@ public class ProjectileScript : MonoBehaviour
     [Space]
     [SerializeField]
     private float damage = 50f;
-
-    private void Start()
-    {
-        Dismiss();
-    }
+    
     private void OnBecameInvisible()
     {
         Dismiss();

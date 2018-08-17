@@ -25,7 +25,7 @@ public class OptionsScript : MonoBehaviour
     private int currentQualityIndex;
     private void Awake()
     {
-        currentQualityIndex = currentQualityIndex = QualitySettings.GetQualityLevel();
+        currentQualityIndex = QualitySettings.GetQualityLevel();
     }
     private void Start()
     {

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class BallistaScript : MonoBehaviour
 {
-    [Header("Player Settings")]
+    [Header("Settings")]
     [Space]
     [SerializeField]
     private float lifePoints = 100f;
 
-    [Header("Attack Settings")]
     [Space]
     [SerializeField]
     private int ammo = 4;
@@ -17,41 +16,49 @@ public class BallistaScript : MonoBehaviour
     private float reloadTime = 1.5f;
     [SerializeField]
     private float shootingForce = 1000f;
+
+    [Header("References")]
+    [Space]
     [SerializeField]
     private Transform shootPoint;
+    [SerializeField]
+    private GameObject bulletPrefab;
 
-    [Header("Player Properties")]
-    [Space]
     private bool isAlive;
     private bool isReloading;
 
     private float currentLifePoints;
-    private int currentAmmo;
+    private float reloadCooldown;
 
-    private Vector2 mouseDirection;
-    //************************************
-    [SerializeField]
-    private GameObject bulletPrefab;
+    private int currentAmmo;
+    private int bulletPoolIndex;
+
     private GameObject bullet;
 
-    private int bulletPoolIndex;
+    private void Awake()
+    {
+        isAlive = true;
+
+        currentLifePoints = lifePoints;
+        currentAmmo = ammo;
+    }
 
     private void Start()
     {
-        isAlive = true;
-        currentLifePoints = lifePoints;
-        currentAmmo = ammo;
+        UpdateUILife();
+        UpdateUIAmmo();
 
-        UpdateLifeBarUI();
-        UpdateAmmoUI();
-
-        //*******
-        bulletPoolIndex = PoolManagerScript.instance.PreCache(bulletPrefab, 2);
+        bulletPoolIndex = PoolManagerScript.instance.PreCache(bulletPrefab);
     }
+
     private void Update()
     {
         if (isAlive && !GameManagerScript.isPaused)
         {
+            if (isReloading)
+            {
+
+            }
             if ((Input.GetButtonDown("Fire1")) && (!isReloading) && (currentAmmo > 0))
             {
                 bullet = PoolManagerScript.instance.GetCachedPrefab(bulletPoolIndex);
@@ -63,32 +70,28 @@ public class BallistaScript : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
-    {
-        if (isAlive == true)
-        {
-            currentLifePoints -= damage;
-            if (currentLifePoints <= 0)
-            {
-                currentLifePoints = 0;
-            }
-            UpdateLifeBarUI();
-            if (currentLifePoints == 0)
-            {
-                Die();
-            }
-        }
-    }
-    private void Die()
-    {
-        isAlive = false;
-        //*********************
-    }
-    private void UpdateLifeBarUI()
-    {
-        float lifePointsFactor = currentLifePoints / lifePoints;
-        UIManagerScript.instance.UpdatePlayerLifeBar(lifePointsFactor);
-    }
+    //public void TakeDamage(float damage)
+    //{
+    //    if (isAlive == true)
+    //    {
+    //        currentLifePoints -= damage;
+    //        if (currentLifePoints <= 0)
+    //        {
+    //            currentLifePoints = 0;
+    //        }
+    //        UIManagerScript.instance.UpdatePlayerLifeBar(currentLifePoints / lifePoints);
+    //        if (currentLifePoints == 0)
+    //        {
+    //            Die();
+    //        }
+    //    }
+    //}
+
+    //private void Die()
+    //{
+    //    isAlive = false;
+    //    //*********************
+    //}
 
     private void Shoot()
     {
@@ -97,12 +100,13 @@ public class BallistaScript : MonoBehaviour
         bullet.SetActive(true);
         bullet.GetComponent<Rigidbody2D>().AddForce(shootPoint.up * shootingForce);
 
-        currentAmmo--;
-        UpdateAmmoUI();
+        --currentAmmo;
+        UpdateUIAmmo();
 
         if (currentAmmo == 0)
         {
-            StartCoroutine(Reload());
+            isReloading = true;
+            reloadCooldown = Time.time + reloadTime;
         }
     }
     private IEnumerator Reload()
@@ -110,10 +114,15 @@ public class BallistaScript : MonoBehaviour
         isReloading = true;
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = ammo;
-        UpdateAmmoUI();
+        UpdateUIAmmo();
         isReloading = false;
     }
-    private void UpdateAmmoUI()
+
+    private void UpdateUILife()
+    {
+        UIManagerScript.instance.UpdatePlayerLifeBar(currentLifePoints / lifePoints);
+    }
+    private void UpdateUIAmmo()
     {
         UIManagerScript.instance.UpdateAmmoImages(currentAmmo);
     }
