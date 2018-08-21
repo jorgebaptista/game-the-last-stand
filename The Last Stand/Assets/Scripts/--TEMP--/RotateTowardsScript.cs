@@ -35,7 +35,7 @@ public class RotateTowardsScript : MonoBehaviour
 
     private void Update()
     {
-        if (!GameManagerScript.isPaused)
+        if (!LevelManagerScript.instance.isPaused)
         {
             Vector3 faceTo = faceToMouse == true ? Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position : target.position;
 

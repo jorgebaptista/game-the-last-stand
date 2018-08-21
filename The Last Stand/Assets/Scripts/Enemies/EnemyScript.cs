@@ -62,7 +62,7 @@ public class EnemyScript : MonoBehaviour {
     private Animator myAnimator;
 
     [Header("Other References")]
-    private GameManagerScript gameManager;
+    private LevelManagerScript gameManager;
     private WaveManager waveManager;
 
     private void Awake()
@@ -70,7 +70,7 @@ public class EnemyScript : MonoBehaviour {
         myRigidBody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
 
-        gameManager = FindObjectOfType<GameManagerScript>();
+        gameManager = FindObjectOfType<LevelManagerScript>();
         waveManager = FindObjectOfType<WaveManager>();
     }
     private void Start()
@@ -137,7 +137,7 @@ public class EnemyScript : MonoBehaviour {
         isMoving = false;
 
         //*****************************
-        gameManager.UpdateMoney(moneyPerKill);
+        gameManager.IncreaseMoney(moneyPerKill);
         waveManager.UpdateIncomingEnemies();
 
         Dismiss();

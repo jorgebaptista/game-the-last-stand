@@ -53,7 +53,7 @@ public class UIManagerScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Pause"))
         {
-            if (!GameManagerScript.isPaused)
+            if (!LevelManagerScript.instance.isPaused)
             {
                 pauseCanvas.SetActive(true);
             }
