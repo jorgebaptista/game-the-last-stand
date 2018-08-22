@@ -53,7 +53,7 @@ public class BallistaScript : MonoBehaviour
 
     private void Update()
     {
-        if (isAlive && !LevelManagerScript.instance.isPaused)
+        if (isAlive && !GameManager.instance.isPaused)
         {
             if (isReloading)
             {

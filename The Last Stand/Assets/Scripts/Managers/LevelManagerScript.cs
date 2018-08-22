@@ -7,19 +7,17 @@ public class LevelManagerScript : MonoBehaviour
     [Header("General")]
     [Space]
     [SerializeField]
-    private float buildModeTime = 30f;
+    private float buildTime = 30f;
 
     [Header("General - Debug")]
     [Space]
-    [SerializeField]
     public int currentMoney = 0;
-    [Space]
-    [SerializeField]
-    public bool buildMode = true;
+
+    public static LevelManagerScript instance;
 
     [HideInInspector]
-    public bool isPaused = false;
-    public static LevelManagerScript instance;
+    public bool buildMode = true;
+    private float baseTimer;
 
     private void Awake()
     {
@@ -35,7 +33,24 @@ public class LevelManagerScript : MonoBehaviour
 
     private void Start()
     {
-        
+        ToggleBuildMode(true);
+    }
+
+    private void FixedUpdate()
+    {
+        if (buildMode)
+        {
+            if (Time.time > baseTimer) ToggleBuildMode(false);
+            else UIManagerScript.instance.UpdateTimer(Mathf.CeilToInt(baseTimer - Time.time));
+        }
+    }
+
+    public void ToggleBuildMode(bool toggle)
+    {
+        buildMode = toggle;
+
+        if (buildMode) baseTimer = buildTime + Time.time;
+        //else StartWave();
     }
 
     public void IncreaseMoney(int money)

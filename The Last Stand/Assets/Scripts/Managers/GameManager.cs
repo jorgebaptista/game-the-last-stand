@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
+
         if (instance == null)
         {
             instance = this;
@@ -16,6 +18,7 @@ public class GameManager : MonoBehaviour
         else if (instance != this)
         {
             Destroy(gameObject);
+            Debug.LogError("Current object " + gameObject.name + " already exists.");
         }
     }
 }
