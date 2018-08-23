@@ -5,58 +5,68 @@ using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour
 {
-    [Header("HUD - Lifebar")]
+    [Header("HUD")]
     [Space]
-    [SerializeField]
-    private Image lifeBarImage;
     [SerializeField]
     private float lifeBarSpeed = 1f;
+    [SerializeField]
+    private Image lifeBarImage;
 
-    [Header("HUD - Ammo")]
-    [Space]
     [Space]
     [SerializeField]
     private Image[] ammoImages;
 
-    [Header("HUD - Wave")]
     [Space]
+    [SerializeField]
+    private Text moneyText;
+
     [Space]
     [SerializeField]
     private Text waveText;
     [SerializeField]
     private Text[] timerText;
 
-    [Header("HUD - Money")]
-    [Space]
-    [SerializeField]
-    private Text moneyText;
-
     [Header("Pause Menu")]
     [Space]
     [SerializeField]
     private GameObject pauseCanvas;
+    [SerializeField]
+    private GameObject pauseMenu;
+    [SerializeField]
+    private GameObject[] pauseExtraMenus;
 
-    public static UIManagerScript instance;
+    [Header("References")]
+    [Space]
+    [SerializeField]
+    private LevelManagerScript levelManagerScript;
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
+        levelManagerScript = levelManagerScript ?? GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
     }
     private void Update()
     {
         if (Input.GetButtonDown("Pause"))
         {
-            if (!GameManager.instance.isPaused)
+            TogglePauseScreen();
+        }
+    }
+
+    public void TogglePauseScreen()
+    {
+        if (!levelManagerScript.isPaused) pauseCanvas.SetActive(true);
+        else
+        {
+            for (int i = 0; i < pauseExtraMenus.Length; ++i)
             {
-                pauseCanvas.SetActive(true);
+                if (pauseExtraMenus[i].activeInHierarchy)
+                {
+                    pauseExtraMenus[i].SetActive(false);
+                    pauseMenu.SetActive(true);
+                    return;
+                }
             }
+            pauseCanvas.SetActive(false);
         }
     }
 

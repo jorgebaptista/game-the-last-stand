@@ -193,7 +193,7 @@ public class WaveManager : MonoBehaviour
 
         while (currentWaveTimer > -1)
         {
-            UIManagerScript.instance.UpdateTimer((int)currentWaveTimer);
+            //UIManagerScript.instance.UpdateTimer((int)currentWaveTimer);
             yield return new WaitForSeconds(1f);
             currentWaveTimer--;
         }
@@ -207,6 +207,6 @@ public class WaveManager : MonoBehaviour
     }
     private void UpdateWaveTextUI(int waveText)
     {
-        UIManagerScript.instance.UpdateWaveText(waveText);
+        //UIManagerScript.instance.UpdateWaveText(waveText);
     }
 }

@@ -53,7 +53,7 @@ public class BallistaScript : MonoBehaviour
 
     private void Update()
     {
-        if (isAlive && !GameManager.instance.isPaused)
+        if (isAlive /*&& !gamemanager.instance.ispaused*/)
         {
             if (isReloading)
             {
@@ -120,10 +120,10 @@ public class BallistaScript : MonoBehaviour
 
     private void UpdateUILife()
     {
-        UIManagerScript.instance.UpdatePlayerLifeBar(currentLifePoints / lifePoints);
+        //UIManagerScript.instance.UpdatePlayerLifeBar(currentLifePoints / lifePoints);
     }
     private void UpdateUIAmmo()
     {
-        UIManagerScript.instance.UpdateAmmoImages(currentAmmo);
+        //UIManagerScript.instance.UpdateAmmoImages(currentAmmo);
     }
 }

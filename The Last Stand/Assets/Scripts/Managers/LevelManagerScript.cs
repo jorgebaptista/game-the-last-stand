@@ -12,6 +12,8 @@ public class LevelManagerScript : MonoBehaviour
     [Header("General - Debug")]
     [Space]
     public int currentMoney = 0;
+    [Space]
+    public bool isPaused;
 
     public static LevelManagerScript instance;
 
@@ -41,7 +43,7 @@ public class LevelManagerScript : MonoBehaviour
         if (buildMode)
         {
             if (Time.time > baseTimer) ToggleBuildMode(false);
-            else UIManagerScript.instance.UpdateTimer(Mathf.CeilToInt(baseTimer - Time.time));
+            //else UIManagerScript.instance.UpdateTimer(Mathf.CeilToInt(baseTimer - Time.time));
         }
     }
 
@@ -53,10 +55,16 @@ public class LevelManagerScript : MonoBehaviour
         //else StartWave();
     }
 
+    public void TogglePause(bool toggle)
+    {
+        isPaused = toggle;
+        Time.timeScale = isPaused ? 0f : 1f;
+    }
+
     public void IncreaseMoney(int money)
     {
         currentMoney += money;
-        UIManagerScript.instance.UpdateMoneyText(currentMoney);
+        //UIManagerScript.instance.UpdateMoneyText(currentMoney);
     }
     public void DecreaseMoney(int cost)
     {
