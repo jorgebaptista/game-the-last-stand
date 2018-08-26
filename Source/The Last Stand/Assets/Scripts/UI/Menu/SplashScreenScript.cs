@@ -1,45 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class SplashScreenScript : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject initialInputText;
-
-    [SerializeField]
-    private GameObject gameLogo;
-
-    [SerializeField]
-    private GameObject mainMenu;
-
-    private bool hasClicked = false;
+    private void Start()
+    {
+        SceneManagerScript.instance.LoadScene("Menu", false);
+    }
 
     private void Update()
     {
-        if (!hasClicked)
+        if (SceneManagerScript.instance.GetAsyncSceneState() && Input.anyKeyDown)
         {
-            if (Input.anyKeyDown)
-            {
-                OpenSplashScreen();
-            }
+            SceneManagerScript.instance.ActivateAsyncScene();
         }
-    }
-
-    private void OpenSplashScreen()
-    {
-        hasClicked = true;
-
-        gameLogo.GetComponent<Animator>().SetTrigger("Pull");
-        initialInputText.SetActive(false);
-    }
-
-    public void OpenMainMenu()
-    {
-        mainMenu.SetActive(true);
-        gameObject.SetActive(false);
-
-        //blurImage.material.SetFloat("_Size", 0);
     }
 }

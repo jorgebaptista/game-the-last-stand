@@ -15,8 +15,8 @@ TagManager:
   - 
   - 
   - Ground
-  - Ballista
-  - Ballista Attack
+  - Player
+  - Player Attack
   - Enemy
   - Enemy Attack
   - 
@@ -45,7 +45,7 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Ballista
+  - name: Player
     uniqueID: 31486045
     locked: 0
   - name: Enemy
