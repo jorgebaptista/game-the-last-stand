@@ -48,7 +48,7 @@ public class BallistaScript : MonoBehaviour
         UpdateUILife();
         UpdateUIAmmo();
 
-        bulletPoolIndex = PoolManagerScript.instance.PreCache(bulletPrefab);
+        //bulletPoolIndex = PoolManagerScript.instance.PreCache(bulletPrefab);
     }
 
     private void Update()
@@ -59,9 +59,9 @@ public class BallistaScript : MonoBehaviour
             {
 
             }
-            if ((Input.GetButtonDown("Fire1")) && (!isReloading) && (currentAmmo > 0))
+            if ((Input.GetButtonDown("Shoot")) && (!isReloading) && (currentAmmo > 0))
             {
-                bullet = PoolManagerScript.instance.GetCachedPrefab(bulletPoolIndex);
+                //bullet = PoolManagerScript.instance.GetCachedPrefab(bulletPoolIndex);
                 if (bullet != null)
                 {
                     Shoot();

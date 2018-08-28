@@ -1,4 +1,7 @@
-﻿using System.Collections;
+﻿#if UNITY_EDITOR
+    using UnityEditor;
+#endif
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -74,5 +77,9 @@ public class SceneManagerScript : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+
+        #if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+        #endif
     }
 }

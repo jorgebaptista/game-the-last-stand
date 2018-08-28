@@ -137,7 +137,7 @@ public class EnemyScript : MonoBehaviour {
         isMoving = false;
 
         //*****************************
-        gameManager.IncreaseMoney(moneyPerKill);
+        gameManager.UpdateMoney(moneyPerKill);
         waveManager.UpdateIncomingEnemies();
 
         Dismiss();

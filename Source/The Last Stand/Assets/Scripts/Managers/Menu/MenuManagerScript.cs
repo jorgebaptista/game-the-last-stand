@@ -123,8 +123,14 @@ public class MenuManagerScript : MonoBehaviour
     }
     #endregion
 
+    #region SceneManager
     public void LoadLevel(string sceneName)
     {
         SceneManagerScript.instance.LoadScene(sceneName);
     }
+    public void Quit()
+    {
+        SceneManagerScript.instance.QuitGame();
+    }
+    #endregion
 }

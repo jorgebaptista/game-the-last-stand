@@ -4,35 +4,43 @@ using UnityEngine;
 public class PoolManagerScript : MonoBehaviour
 {
     private int childIndex = 0;
-    private List<GameObject> prefabList = new List<GameObject>();
+    private List<CachedPrefab> cacheList = new List<CachedPrefab>();
 
-    public static PoolManagerScript instance;
-
-    private void Awake()
+    private struct CachedPrefab
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
+        public GameObject prefab;
+        public bool sortLayerOrder;
     }
 
-    public int PreCache(GameObject prefab, int initialAmmount = 4)
+    public int PreCache(GameObject prefab, int initialAmmount = 10, bool sortLayerOrder = true)
     {
-        int poolIndex = childIndex++;
-        prefabList.Insert(poolIndex, prefab);
+        if (prefab == null) Debug.LogError("Pool Manager Precache Method called without prefab argument.");
 
-        int currentSortingOrder = 0;
+        foreach (CachedPrefab cachedPrefab in cacheList)
+        {
+            if (prefab == cachedPrefab.prefab) return cacheList.IndexOf(cachedPrefab);
+        }       
+
+        int poolIndex = childIndex++;
+
+        CachedPrefab cache;
+        cache.prefab = prefab;
+        cache.sortLayerOrder = sortLayerOrder;
+
+        cacheList.Insert(poolIndex, cache);
 
         new GameObject(prefab.name + " Pool").transform.parent = transform;
 
         for (int i = 0; i < initialAmmount; ++i)
         {
             GameObject cachedPrefab = Instantiate(prefab, transform.GetChild(poolIndex));
-            cachedPrefab.GetComponent<SpriteRenderer>().sortingOrder = currentSortingOrder++;
+
+            if (sortLayerOrder)
+            {
+                SpriteRenderer cachedSpriteRenderer = cachedPrefab.GetComponent<SpriteRenderer>();
+                if (cachedSpriteRenderer != null) cachedSpriteRenderer.sortingOrder = i;
+            }
+
             cachedPrefab.SetActive(false);
         }
 
@@ -54,8 +62,12 @@ public class PoolManagerScript : MonoBehaviour
             }
         }
 
-        cachedPrefab = Instantiate(prefabList[poolIndex], pool);
-        cachedPrefab.GetComponent<SpriteRenderer>().sortingOrder = pool.childCount - 1;
+        cachedPrefab = Instantiate(cacheList[poolIndex].prefab, pool);
+        if (cacheList[poolIndex].sortLayerOrder)
+        {
+            SpriteRenderer cachedSpriteRenderer = cachedPrefab.GetComponent<SpriteRenderer>();
+            if (cachedSpriteRenderer != null) cachedSpriteRenderer.sortingOrder = pool.childCount - 1;
+        }
 
         return cachedPrefab;
     }

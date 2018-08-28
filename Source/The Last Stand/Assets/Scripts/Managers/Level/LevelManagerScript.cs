@@ -7,30 +7,26 @@ public class LevelManagerScript : MonoBehaviour
     [Header("General")]
     [Space]
     [SerializeField]
-    private float buildTime = 30f;
+    private float buildTimer = 30f;
 
     [Header("General - Debug")]
     [Space]
     public int currentMoney = 0;
-    [Space]
-    public bool isPaused;
 
-    public static LevelManagerScript instance;
+    [HideInInspector]
+    public bool isPaused;
 
     [HideInInspector]
     public bool buildMode = true;
     private float baseTimer;
 
+    private UIManagerScript uIManager;
+    private WaveManagerScript waveManager;
+
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
+        waveManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<WaveManagerScript>();
+        uIManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<UIManagerScript>();
     }
 
     private void Start()
@@ -43,7 +39,9 @@ public class LevelManagerScript : MonoBehaviour
         if (buildMode)
         {
             if (Time.time > baseTimer) ToggleBuildMode(false);
-            //else UIManagerScript.instance.UpdateTimer(Mathf.CeilToInt(baseTimer - Time.time));
+            else uIManager.UpdateWaveText(Mathf.CeilToInt(baseTimer - Time.time));
+
+            Debug.LogWarning("Unfinished Script");
         }
     }
 
@@ -51,8 +49,8 @@ public class LevelManagerScript : MonoBehaviour
     {
         buildMode = toggle;
 
-        if (buildMode) baseTimer = buildTime + Time.time;
-        //else StartWave();
+        if (buildMode) baseTimer = buildTimer + Time.time;
+        else waveManager.StartWave();
     }
 
     public void TogglePause(bool toggle)
@@ -61,14 +59,11 @@ public class LevelManagerScript : MonoBehaviour
         Time.timeScale = isPaused ? 0f : 1f;
     }
 
-    public void IncreaseMoney(int money)
+    public void UpdateMoney(int money)
     {
         currentMoney += money;
+        Debug.LogWarning("Unfinished Script");
         //UIManagerScript.instance.UpdateMoneyText(currentMoney);
-    }
-    public void DecreaseMoney(int cost)
-    {
-        //*******************
     }
 
     public void GameOver()
