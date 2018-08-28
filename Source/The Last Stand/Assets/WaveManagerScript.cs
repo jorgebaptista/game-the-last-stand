@@ -50,6 +50,7 @@ public class WaveManagerScript : MonoBehaviour
     }
     #endregion
 
+    #region Init
     private void Awake()
     {
         waves = GetComponentsInChildren<WaveScript>();
@@ -76,6 +77,7 @@ public class WaveManagerScript : MonoBehaviour
         spawnTimer = waves[currentWave].spawnTimer;
         SetUpEnemies();
     }
+    #endregion
 
     #region Enemy Setup
     private void SetUpEnemies()
@@ -203,7 +205,6 @@ public class WaveManagerScript : MonoBehaviour
                                 sortedEnemies[i] = pickedEnemy;
                                 UpdateEnemies();
                             }
-
                             break;
                         }
                     }
