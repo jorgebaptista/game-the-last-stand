@@ -368,9 +368,9 @@ MonoBehaviour:
   spawnTimer: 3
   enemyList:
   - enemyType: 0
-    amount: 7
+    amount: 5
     lifeMultiplier: 1
     damageMultiplier: 1
-    attackCooldownMultiplier: 0
+    attackCooldownMultiplier: 1
     speedMultiplier: 1
-    probability: 80
+    probability: 100

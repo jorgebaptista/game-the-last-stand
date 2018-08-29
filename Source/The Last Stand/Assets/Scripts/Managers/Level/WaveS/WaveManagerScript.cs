@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public enum EnemyType
 {
-    Normal,
+    Draugr,
     Ranged,
     Heavy
 }
