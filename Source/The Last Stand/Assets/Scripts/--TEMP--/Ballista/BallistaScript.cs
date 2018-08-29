@@ -6,8 +6,8 @@ public class BallistaScript : MonoBehaviour
 {
     [Header("Settings")]
     [Space]
-    [SerializeField]
-    private float lifePoints = 100f;
+    //[SerializeField]
+    //private float lifePoints = 100f;
 
     [Space]
     [SerializeField]
@@ -27,8 +27,8 @@ public class BallistaScript : MonoBehaviour
     private bool isAlive;
     private bool isReloading;
 
-    private float currentLifePoints;
-    private float reloadCooldown;
+    //private float currentLifePoints;
+    //private float reloadCooldown;
 
     private int currentAmmo;
     private int bulletPoolIndex;
@@ -39,7 +39,7 @@ public class BallistaScript : MonoBehaviour
     {
         isAlive = true;
 
-        currentLifePoints = lifePoints;
+        //currentLifePoints = lifePoints;
         currentAmmo = ammo;
     }
 
@@ -106,7 +106,7 @@ public class BallistaScript : MonoBehaviour
         if (currentAmmo == 0)
         {
             isReloading = true;
-            reloadCooldown = Time.time + reloadTime;
+            //reloadCooldown = Time.time + reloadTime;
         }
     }
     private IEnumerator Reload()

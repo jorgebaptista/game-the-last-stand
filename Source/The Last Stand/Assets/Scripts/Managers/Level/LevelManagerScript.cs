@@ -62,16 +62,17 @@ public class LevelManagerScript : MonoBehaviour
     public void UpdateMoney(int money)
     {
         currentMoney += money;
-        Debug.LogWarning("Unfinished Script");
-        //UIManagerScript.instance.UpdateMoneyText(currentMoney);
+        uIManager.UpdateMoneyText(currentMoney);
     }
 
     public void GameOver()
     {
+        Debug.LogWarning("Unfinished Script");
         //*******************
     }
-    public void Victory()
+    public void GameWin()
     {
+        Debug.LogWarning("Unfinished Script");
         //*******************
     }
 }

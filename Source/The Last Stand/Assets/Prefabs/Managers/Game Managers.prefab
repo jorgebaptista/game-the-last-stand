@@ -39,12 +39,12 @@ GameObject:
   - component: {fileID: 4446921215998480}
   - component: {fileID: 82010999361304190}
   m_Layer: 0
-  m_Name: Audio Manager
+  m_Name: '*Audio Manager'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1235401914203806
 GameObject:
   m_ObjectHideFlags: 1

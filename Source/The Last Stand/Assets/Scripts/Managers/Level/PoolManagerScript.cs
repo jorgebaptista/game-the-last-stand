@@ -29,6 +29,19 @@ public class PoolManagerScript : MonoBehaviour
 
         cacheList.Insert(poolIndex, cache);
 
+        int currentSortOrder = 0;
+
+        if (sortLayerOrder)
+        {
+            SpriteRenderer cachedSpriteRenderer = prefab.GetComponent<SpriteRenderer>();
+
+            if (cachedSpriteRenderer != null)
+            {
+                int cachedSortOrderID = cachedSpriteRenderer.sortingLayerID;
+                currentSortOrder = CheckSortOrder(cachedSortOrderID);
+            }
+        }
+
         new GameObject(prefab.name + " Pool").transform.parent = transform;
 
         for (int i = 0; i < initialAmmount; ++i)
@@ -38,9 +51,8 @@ public class PoolManagerScript : MonoBehaviour
             if (sortLayerOrder)
             {
                 SpriteRenderer cachedSpriteRenderer = cachedPrefab.GetComponent<SpriteRenderer>();
-                if (cachedSpriteRenderer != null) cachedSpriteRenderer.sortingOrder = i;
+                if (cachedSpriteRenderer != null) cachedSpriteRenderer.sortingOrder = i + currentSortOrder;
             }
-
             cachedPrefab.SetActive(false);
         }
 
@@ -63,12 +75,38 @@ public class PoolManagerScript : MonoBehaviour
         }
 
         cachedPrefab = Instantiate(cacheList[poolIndex].prefab, pool);
+
         if (cacheList[poolIndex].sortLayerOrder)
         {
             SpriteRenderer cachedSpriteRenderer = cachedPrefab.GetComponent<SpriteRenderer>();
-            if (cachedSpriteRenderer != null) cachedSpriteRenderer.sortingOrder = pool.childCount - 1;
+
+            if (cachedSpriteRenderer != null)
+            {
+                int cachedSortOrderID = cachedSpriteRenderer.sortingLayerID;
+                int currentSortOrder = CheckSortOrder(cachedSortOrderID);
+
+                cachedSpriteRenderer.sortingOrder = currentSortOrder + pool.childCount - 1;
+            }
         }
 
+        cachedPrefab.SetActive(false);
         return cachedPrefab;
+    }
+
+    private int CheckSortOrder(int iD)
+    {
+        int currentSortOrder = 0;
+
+        for (int i = 0; i < transform.childCount; ++i)
+        {
+            int targetSortingLayerID = transform.GetChild(i).GetChild(0).GetComponent<SpriteRenderer>().sortingLayerID;
+
+            if (targetSortingLayerID == iD)
+            {
+                currentSortOrder += transform.GetChild(i).childCount;
+            }
+        }
+
+        return currentSortOrder;
     }
 }
