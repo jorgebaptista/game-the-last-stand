@@ -25,8 +25,9 @@ public class LevelManagerScript : MonoBehaviour
 
     private void Awake()
     {
-        waveManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<WaveManagerScript>();
-        uIManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<UIManagerScript>();
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        waveManager = gameController.GetComponentInChildren<WaveManagerScript>();
+        uIManager = gameController.GetComponentInChildren<UIManagerScript>();
     }
 
     private void Start()

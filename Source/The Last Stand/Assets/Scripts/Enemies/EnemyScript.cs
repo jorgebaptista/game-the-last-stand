@@ -8,7 +8,7 @@ using UnityEditor;
 public abstract class EnemyScript : MonoBehaviour
 {
 #region Variables
-    [Header("Enemy Settings")]
+    [Header("Settings")]
     [Space]
     [SerializeField]
     private float life = 80f;

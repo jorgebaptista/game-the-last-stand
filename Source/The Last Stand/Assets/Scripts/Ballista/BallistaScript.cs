@@ -1,129 +1,162 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BallistaScript : MonoBehaviour
+public class BallistaScript : MonoBehaviour, IDamageable
 {
+    #region Variables
     [Header("Settings")]
     [Space]
-    //[SerializeField]
-    //private float lifePoints = 100f;
+    [SerializeField]
+    private float life = 100f;
+
+    [Space]
+    private int ammo = 4;
+    [SerializeField]
+    private float fireRate = 0.5f;
+    [SerializeField]
+    private float reloadTimer = 2f;
+    [SerializeField]
+    private float shootForce = 800f;
 
     [Space]
     [SerializeField]
-    private int ammo = 4;
+    private bool instantRotation = false;
     [SerializeField]
-    private float reloadTime = 1.5f;
-    [SerializeField]
-    private float shootingForce = 1000f;
+    private float rotationSpeed = 100f;
 
-    [Header("References")]
+    [Header("Attack Settings")]
     [Space]
     [SerializeField]
     private Transform shootPoint;
     [SerializeField]
-    private GameObject bulletPrefab;
+    private GameObject boltPrefab;
 
-    private bool isAlive;
-    private bool isReloading;
+    [Header("References")]
+    [Space]
+    [SerializeField]
+    private Transform ballistaHead;
 
-    //private float currentLifePoints;
-    //private float reloadCooldown;
+    private int currentAmmo, boltPoolID;
 
-    private int currentAmmo;
-    private int bulletPoolIndex;
+    private float currentLife;
+    private float pivotOffset = 0.31f;
+    private float baseTimer;
 
-    private GameObject bullet;
+    private bool isAlive, isReloading;
+    private bool isFacingRight = true;
+
+    private SpriteRenderer mySpriteRenderer;
+
+    private LevelManagerScript levelManager;
+    private UIManagerScript uIManager;
+    private PoolManagerScript poolManager;
+    #endregion
 
     private void Awake()
     {
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        levelManager = gameController.GetComponentInChildren<LevelManagerScript>();
+        uIManager = gameController.GetComponentInChildren<UIManagerScript>();
+        poolManager = gameController.GetComponentInChildren<PoolManagerScript>();
+
+        mySpriteRenderer = ballistaHead.GetComponent<SpriteRenderer>();
+
         isAlive = true;
 
-        //currentLifePoints = lifePoints;
+        currentLife = life;
         currentAmmo = ammo;
-    }
-
-    private void Start()
-    {
-        UpdateUILife();
-        UpdateUIAmmo();
-
-        //bulletPoolIndex = PoolManagerScript.instance.PreCache(bulletPrefab);
+        boltPoolID = poolManager.PreCache(boltPrefab);
+        
+        UpdateUI();
     }
 
     private void Update()
     {
-        if (isAlive /*&& !gamemanager.instance.ispaused*/)
+        if (isAlive && !levelManager.buildMode && !levelManager.isPaused)
         {
-            if (isReloading)
-            {
+            if ((Input.GetButtonDown("Shoot")) && Time.time > baseTimer + fireRate && !isReloading) Shoot();
 
-            }
-            if ((Input.GetButtonDown("Shoot")) && (!isReloading) && (currentAmmo > 0))
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) - ballistaHead.position;
+
+            float angle = Mathf.Atan2(mousePosition.y - pivotOffset, mousePosition.x) * Mathf.Rad2Deg;
+            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            ballistaHead.rotation = instantRotation ? Quaternion.Slerp(ballistaHead.rotation, targetRotation, rotationSpeed * Time.deltaTime) : targetRotation;
+
+            if ((Input.mousePosition.x < Camera.main.WorldToScreenPoint(transform.position).x && isFacingRight)
+                || Input.mousePosition.x > Camera.main.WorldToScreenPoint(transform.position).x && !isFacingRight)
             {
-                //bullet = PoolManagerScript.instance.GetCachedPrefab(bulletPoolIndex);
-                if (bullet != null)
-                {
-                    Shoot();
-                }
+                Flip();
             }
         }
     }
 
-    //public void TakeDamage(float damage)
-    //{
-    //    if (isAlive == true)
-    //    {
-    //        currentLifePoints -= damage;
-    //        if (currentLifePoints <= 0)
-    //        {
-    //            currentLifePoints = 0;
-    //        }
-    //        UIManagerScript.instance.UpdatePlayerLifeBar(currentLifePoints / lifePoints);
-    //        if (currentLifePoints == 0)
-    //        {
-    //            Die();
-    //        }
-    //    }
-    //}
+    private void Flip()
+    {
+        Debug.LogWarning("Unfinished Script.");
 
-    //private void Die()
-    //{
-    //    isAlive = false;
-    //    //*********************
-    //}
+        isFacingRight = !isFacingRight;
+        mySpriteRenderer.flipY = !mySpriteRenderer.flipY;
 
+        Vector2 shootPointPosition = shootPoint.localPosition;
+        shootPointPosition.y *= -1;
+        shootPoint.localPosition = shootPointPosition;
+    }
+
+    #region Attack
     private void Shoot()
     {
-        bullet.transform.position = shootPoint.position;
-        bullet.transform.rotation = shootPoint.rotation;
-        bullet.SetActive(true);
-        bullet.GetComponent<Rigidbody2D>().AddForce(shootPoint.up * shootingForce);
+        baseTimer = Time.time;
+        GameObject bolt = poolManager.GetCachedPrefab(boltPoolID);
+
+        bolt.transform.position = shootPoint.position;
+        bolt.transform.rotation = shootPoint.rotation;
+        bolt.SetActive(true);
+        bolt.GetComponent<Rigidbody2D>().AddForce(shootPoint.up * shootForce);
 
         --currentAmmo;
-        UpdateUIAmmo();
 
         if (currentAmmo == 0)
         {
-            isReloading = true;
-            //reloadCooldown = Time.time + reloadTime;
+            StartCoroutine(Reload());
         }
+        UpdateUI();
     }
+
     private IEnumerator Reload()
     {
         isReloading = true;
-        yield return new WaitForSeconds(reloadTime);
+        yield return new WaitForSeconds(reloadTimer);
         currentAmmo = ammo;
-        UpdateUIAmmo();
+        UpdateUI();
         isReloading = false;
     }
+    #endregion
 
-    private void UpdateUILife()
+    public void TakeDamage(float damage)
     {
-        //UIManagerScript.instance.UpdatePlayerLifeBar(currentLifePoints / lifePoints);
+        if (isAlive == true)
+        {
+            currentLife -= damage;
+            if (currentLife <= 0)
+            {
+                currentLife = 0;
+                Die();
+            }
+
+            UpdateUI();
+        }
     }
-    private void UpdateUIAmmo()
+
+    private void Die()
     {
-        //UIManagerScript.instance.UpdateAmmoImages(currentAmmo);
+        isAlive = false;
+        levelManager.GameOver();
+    }
+
+    private void UpdateUI()
+    {
+        uIManager.UpdatePlayerLifeBar(currentLife / life);
+        uIManager.UpdateAmmoImages(currentAmmo);
     }
 }

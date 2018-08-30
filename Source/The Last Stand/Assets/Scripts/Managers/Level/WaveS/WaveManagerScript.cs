@@ -51,12 +51,13 @@ public class WaveManagerScript : MonoBehaviour
     #region Init
     private void Awake()
     {
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        levelManager = gameController.GetComponentInChildren<LevelManagerScript>();
+        uIManager = gameController.GetComponentInChildren<UIManagerScript>();
+        poolManager = gameController.GetComponentInChildren<PoolManagerScript>();
+
         waves = GetComponentsInChildren<WaveScript>();
         spawners = GameObject.FindGameObjectsWithTag("Spawner");
-
-        levelManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
-        uIManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<UIManagerScript>();
-        poolManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<PoolManagerScript>();
 
         DebugScript();
 

@@ -150,72 +150,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1890214762866746, guid: fa9b3f12c7dd6504394e251980c82127,
     type: 2}
   m_PrefabInternal: {fileID: 1414312217}
---- !u!1 &379291284
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1636452640940984, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 379291285}
-  - component: {fileID: 379291286}
-  m_Layer: 0
-  m_Name: Wave 5
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &379291285
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4832228274084190, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 379291284}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1389357325}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &379291286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114247443945614806, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 379291284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fce076855f8f4e346a4b9affcef6889b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnTimer: 3
-  enemyList:
-  - enemyType: 0
-    amount: 2
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 30
-  - enemyType: 1
-    amount: 5
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
-  - enemyType: 2
-    amount: 12
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
 --- !u!1 &411392939
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,46 +400,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1934152888717428, guid: be924e2daedc0604dbe1ba2f195e6b3b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1934152888717428, guid: be924e2daedc0604dbe1ba2f195e6b3b, type: 2}
-      propertyPath: m_Name
-      value: '*Ballista'
-      objectReference: {fileID: 0}
-    - target: {fileID: 114149755998902068, guid: be924e2daedc0604dbe1ba2f195e6b3b,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114249600519866414, guid: be924e2daedc0604dbe1ba2f195e6b3b,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999004040587476, guid: be924e2daedc0604dbe1ba2f195e6b3b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999004040587476, guid: be924e2daedc0604dbe1ba2f195e6b3b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999004040587476, guid: be924e2daedc0604dbe1ba2f195e6b3b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999004040587476, guid: be924e2daedc0604dbe1ba2f195e6b3b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999004040587476, guid: be924e2daedc0604dbe1ba2f195e6b3b, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: -90
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114249600519866414, guid: be924e2daedc0604dbe1ba2f195e6b3b, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be924e2daedc0604dbe1ba2f195e6b3b, type: 2}
   m_IsPrefabAsset: 0
 --- !u!114 &541725898 stripped
@@ -514,72 +409,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1414312217}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &544020985
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1636452640940984, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 544020986}
-  - component: {fileID: 544020987}
-  m_Layer: 0
-  m_Name: Wave 4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &544020986
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4832228274084190, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 544020985}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1389357325}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &544020987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114247443945614806, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 544020985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fce076855f8f4e346a4b9affcef6889b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnTimer: 3
-  enemyList:
-  - enemyType: 0
-    amount: 2
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 30
-  - enemyType: 1
-    amount: 5
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
-  - enemyType: 2
-    amount: 12
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
 --- !u!114 &595552871 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114885483682858588, guid: fa9b3f12c7dd6504394e251980c82127,
@@ -1057,11 +886,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1365133144834678, guid: fa9b3f12c7dd6504394e251980c82127,
     type: 2}
   m_PrefabInternal: {fileID: 1414312217}
---- !u!4 &1389357325 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4723030509654208, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1816349151}
 --- !u!1001 &1414312217
 Prefab:
   m_ObjectHideFlags: 0
@@ -1462,72 +1286,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1414312217}
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
---- !u!1 &1885446759
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1636452640940984, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1885446760}
-  - component: {fileID: 1885446761}
-  m_Layer: 0
-  m_Name: Wave 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!4 &1885446760
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4832228274084190, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1885446759}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1389357325}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1885446761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114247443945614806, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1885446759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fce076855f8f4e346a4b9affcef6889b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnTimer: 3
-  enemyList:
-  - enemyType: 0
-    amount: 2
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 30
-  - enemyType: 1
-    amount: 5
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
-  - enemyType: 2
-    amount: 12
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
 --- !u!114 &1918879901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114700955617287700, guid: fa9b3f12c7dd6504394e251980c82127,
