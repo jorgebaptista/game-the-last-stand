@@ -37,7 +37,7 @@ public abstract class EnemyScript : MonoBehaviour
     [SerializeField]
     private Image lifeBarImage;
     [SerializeField]
-    private float lifeBarSpeed = 1.5f;
+    private float lifeBarSpeed = 5f;
 
     protected bool isAlive, isAttacking;
 
@@ -113,13 +113,11 @@ public abstract class EnemyScript : MonoBehaviour
         {
             currentLife -= damage;
 
-            if (currentLife <= 0)
-            {
-                currentLife = 0;
-                Die();
-            }
+            if (currentLife <= 0) currentLife = 0;
 
             UpdateLifeBar();
+
+            if (currentLife == 0) Die();
         }
     }
 

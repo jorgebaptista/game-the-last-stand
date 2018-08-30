@@ -394,7 +394,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   lifeBarImage: {fileID: 114349076414592366}
-  lifeBarSpeed: 1.5
+  lifeBarSpeed: 5
   attackTrigger: {fileID: 61065057091229240}
   pushBackForce: 200
   checkRadius: 0.1

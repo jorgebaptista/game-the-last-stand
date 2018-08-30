@@ -1,14 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour
 {
+    #region Variables
     [Header("HUD")]
     [Space]
     [SerializeField]
-    private float lifeBarSpeed = 1f;
+    private float lifeBarSpeed = 5f;
     [SerializeField]
     private Image lifeBarImage;
 
@@ -23,8 +23,11 @@ public class UIManagerScript : MonoBehaviour
     [Space]
     [SerializeField]
     private Text waveText;
+
+    [Header("Build Mode")]
+    [Space]
     [SerializeField]
-    private Text[] timerText;
+    private Text timerText;
 
     [Header("Pause Menu")]
     [Space]
@@ -35,44 +38,27 @@ public class UIManagerScript : MonoBehaviour
     [SerializeField]
     private GameObject[] pauseExtraMenus;
 
-    [Header("References")]
-    [Space]
-    [SerializeField]
-    private LevelManagerScript levelManagerScript;
+    private LevelManagerScript levelManager;
+    #endregion
 
     private void Awake()
     {
-        levelManagerScript = levelManagerScript ?? GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
+        levelManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
     }
+
     private void Update()
     {
         if (Input.GetButtonDown("Cancel")) TogglePauseScreen();
     }
 
-    public void TogglePauseScreen()
+    #region (HUD) - Heads Up Display
+    public void UpdateLifeBar(float lifePointsPercentage)
     {
-        if (!levelManagerScript.isPaused) pauseCanvas.SetActive(true);
-        else
-        {
-            for (int i = 0; i < pauseExtraMenus.Length; ++i)
-            {
-                if (pauseExtraMenus[i].activeInHierarchy)
-                {
-                    pauseExtraMenus[i].SetActive(false);
-                    pauseMenu.SetActive(true);
-                    return;
-                }
-            }
-            pauseCanvas.SetActive(false);
-        }
+        StopCoroutine("UpdateLifeBarImage");
+        StartCoroutine("UpdateLifeBarImage", lifePointsPercentage);
     }
 
-    public void UpdatePlayerLifeBar(float lifePointsPercentage)
-    {
-        StopCoroutine("UpdatePlayerLifeBarImage");
-        StartCoroutine("UpdatePlayerLifeBarImage", lifePointsPercentage);
-    }
-    private IEnumerator UpdatePlayerLifeBarImage(float lifePointsPercentage)
+    private IEnumerator UpdateLifeBarImage(float lifePointsPercentage)
     {
         while(lifePointsPercentage != lifeBarImage.fillAmount)
         {
@@ -83,17 +69,7 @@ public class UIManagerScript : MonoBehaviour
 
     public void UpdateAmmoImages(int currentAmmo)
     {
-        for (int i = 0; i < ammoImages.Length; i++)
-        {
-            if (i < currentAmmo)
-            {
-                ammoImages[i].gameObject.SetActive(true);
-            }
-            else
-            {
-                ammoImages[i].gameObject.SetActive(false);
-            }
-        }
+        for (int i = 0; i < ammoImages.Length; i++) ammoImages[i].gameObject.SetActive(i < currentAmmo);
     }
 
     public void UpdateMoneyText(int money)
@@ -105,11 +81,32 @@ public class UIManagerScript : MonoBehaviour
     {
         waveText.text = wave.ToString();
     }
-    public void UpdateTimer(int time)
+    #endregion
+
+    public void UpdateBuildModeTimer(int time)
     {
-        for(int i = 0; i < timerText.Length; ++i)
-        {
-            timerText[i].text = time.ToString();
-        }
+        timerText.text = time.ToString();
     }
+
+    #region Pause
+    public void TogglePauseScreen()
+    {
+        if (!levelManager.isPaused) pauseCanvas.SetActive(true);
+        else CollapsePauseScreens();
+    }
+
+    private void CollapsePauseScreens()
+    {
+        for (int i = 0; i < pauseExtraMenus.Length; ++i)
+        {
+            if (pauseExtraMenus[i].activeInHierarchy)
+            {
+                pauseExtraMenus[i].SetActive(false);
+                pauseMenu.SetActive(true);
+                return;
+            }
+        }
+        pauseCanvas.SetActive(false);
+    }
+    #endregion
 }

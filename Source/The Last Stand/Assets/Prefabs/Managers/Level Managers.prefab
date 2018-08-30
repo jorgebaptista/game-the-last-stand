@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4208ea129ff93944b050199e496bbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeBarSpeed: 1
+  lifeBarSpeed: 5
   lifeBarImage: {fileID: 0}
   ammoImages:
   - {fileID: 0}
@@ -344,16 +344,13 @@ MonoBehaviour:
   - {fileID: 0}
   moneyText: {fileID: 0}
   waveText: {fileID: 0}
-  timerText:
-  - {fileID: 0}
-  - {fileID: 0}
+  timerText: {fileID: 0}
   pauseCanvas: {fileID: 0}
   pauseMenu: {fileID: 0}
   pauseExtraMenus:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  levelManagerScript: {fileID: 114004477858588386}
 --- !u!114 &114204005164977072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -411,28 +408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 3
-  enemyList:
-  - enemyType: 0
-    amount: 2
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 30
-  - enemyType: 1
-    amount: 5
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
-  - enemyType: 2
-    amount: 12
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
+  enemyList: []
 --- !u!114 &114247443945614806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -445,28 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 3
-  enemyList:
-  - enemyType: 0
-    amount: 2
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 30
-  - enemyType: 1
-    amount: 5
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
-  - enemyType: 2
-    amount: 12
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
+  enemyList: []
 --- !u!114 &114298136833448096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -537,25 +492,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 3
-  enemyList:
-  - enemyType: 0
-    amount: 2
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 30
-  - enemyType: 1
-    amount: 5
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
-  - enemyType: 2
-    amount: 12
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 0
-    speedMultiplier: 1
-    probability: 65
+  enemyList: []

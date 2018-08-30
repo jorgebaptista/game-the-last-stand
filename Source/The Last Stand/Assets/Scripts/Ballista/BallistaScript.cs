@@ -156,7 +156,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
 
     private void UpdateUI()
     {
-        uIManager.UpdatePlayerLifeBar(currentLife / life);
+        uIManager.UpdateLifeBar(currentLife / life);
         uIManager.UpdateAmmoImages(currentAmmo);
     }
 }
