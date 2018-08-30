@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cabc90bcabfb84bb56aab9950e35a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildTimer: 3
+  buildTimer: 30
   currentMoney: 0
   isPaused: 0
   buildMode: 0
@@ -343,7 +343,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   moneyText: {fileID: 0}
+  moneyAnimation:
+    gameObject: {fileID: 0}
+    symbol: {fileID: 0}
+    text: {fileID: 0}
   waveText: {fileID: 0}
+  buildModeCanvas: {fileID: 0}
   timerText: {fileID: 0}
   pauseCanvas: {fileID: 0}
   pauseMenu: {fileID: 0}

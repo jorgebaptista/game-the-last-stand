@@ -19,6 +19,19 @@ public class UIManagerScript : MonoBehaviour
     [Space]
     [SerializeField]
     private Text moneyText;
+    [Space]
+    [SerializeField]
+    private MoneyAnimation moneyAnimation;
+
+    [System.Serializable]
+    private struct MoneyAnimation
+    {
+        public GameObject gameObject;
+        public Text symbol;
+        public Text text;
+    }
+
+    private int moneyGathered;
 
     [Space]
     [SerializeField]
@@ -26,6 +39,9 @@ public class UIManagerScript : MonoBehaviour
 
     [Header("Build Mode")]
     [Space]
+    [SerializeField]
+    private GameObject buildModeCanvas;
+
     [SerializeField]
     private Text timerText;
 
@@ -72,9 +88,26 @@ public class UIManagerScript : MonoBehaviour
         for (int i = 0; i < ammoImages.Length; i++) ammoImages[i].gameObject.SetActive(i < currentAmmo);
     }
 
-    public void UpdateMoneyText(int money)
+    public void UpdateMoneyText(int money, int moneyGained)
     {
         moneyText.text = money.ToString();
+
+        if (money > 0)
+        {
+            moneyAnimation.symbol.text = "+";
+            moneyAnimation.symbol.color = Color.green;
+        }
+        else
+        {
+            moneyAnimation.symbol.text = "-";
+            moneyAnimation.symbol.color = Color.red;
+        }
+
+        if (moneyAnimation.gameObject.activeInHierarchy) moneyGathered += moneyGained;
+        else moneyGathered = moneyGained;
+
+        moneyAnimation.text.text = moneyGathered.ToString();
+        moneyAnimation.gameObject.SetActive(true);
     }
 
     public void UpdateWaveText(int wave)
@@ -83,10 +116,17 @@ public class UIManagerScript : MonoBehaviour
     }
     #endregion
 
+    #region Build Mode UI
+    public void ToggleBuildModeUI(bool toggle)
+    {
+        buildModeCanvas.SetActive(toggle);
+    }
+
     public void UpdateBuildModeTimer(int time)
     {
         timerText.text = time.ToString();
     }
+    #endregion
 
     #region Pause
     public void TogglePauseScreen()

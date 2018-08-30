@@ -210,6 +210,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114083162488541614, guid: 59636c756a1110242b8233004e7af09a,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1715097447}
     - target: {fileID: 114091387191712716, guid: 59636c756a1110242b8233004e7af09a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -219,18 +224,7 @@ Prefab:
       propertyPath: m_Name
       value: '*Screen Canvas'
       objectReference: {fileID: 0}
-    - target: {fileID: 224167339582279538, guid: 59636c756a1110242b8233004e7af09a,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224650631226368418, guid: 59636c756a1110242b8233004e7af09a,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114892881069395222, guid: 59636c756a1110242b8233004e7af09a, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59636c756a1110242b8233004e7af09a, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &111333743
@@ -270,6 +264,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1574627994072392, guid: 59636c756a1110242b8233004e7af09a,
     type: 2}
   m_PrefabInternal: {fileID: 89854012}
+--- !u!1 &196121182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1720034874410472, guid: 59636c756a1110242b8233004e7af09a,
+    type: 2}
+  m_PrefabInternal: {fileID: 89854012}
+--- !u!114 &378630015 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114063576576044390, guid: 59636c756a1110242b8233004e7af09a,
+    type: 2}
+  m_PrefabInternal: {fileID: 89854012}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &401479628 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114491655654638214, guid: 59636c756a1110242b8233004e7af09a,
@@ -487,6 +492,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.01
   beginToRight: 1
+--- !u!114 &484134392 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114583891383298580, guid: 59636c756a1110242b8233004e7af09a,
+    type: 2}
+  m_PrefabInternal: {fileID: 89854012}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &495645574
 Prefab:
   m_ObjectHideFlags: 0
@@ -742,6 +753,11 @@ Transform:
   m_Father: {fileID: 111333744}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &733334905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1179749348685756, guid: 59636c756a1110242b8233004e7af09a,
+    type: 2}
+  m_PrefabInternal: {fileID: 89854012}
 --- !u!1 &739296921
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,58 +1150,6 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1816349151}
   m_Script: {fileID: 11500000, guid: d2cabc90bcabfb84bb56aab9950e35a0, type: 3}
---- !u!1 &1792186923 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1351363553434268, guid: 59636c756a1110242b8233004e7af09a,
-    type: 2}
-  m_PrefabInternal: {fileID: 89854012}
---- !u!114 &1792186928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1792186923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1715097447}
-          m_MethodName: TogglePause
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1715097447}
-          m_MethodName: TogglePause
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
 --- !u!1001 &1816349151
 Prefab:
   m_ObjectHideFlags: 0
@@ -1261,9 +1225,29 @@ Prefab:
       objectReference: {fileID: 541725898}
     - target: {fileID: 114054497351420908, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
         type: 2}
+      propertyPath: moneyAnimation.gameObject
+      value: 
+      objectReference: {fileID: 733334905}
+    - target: {fileID: 114054497351420908, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
+        type: 2}
+      propertyPath: moneyAnimation.symbol
+      value: 
+      objectReference: {fileID: 378630015}
+    - target: {fileID: 114054497351420908, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
+        type: 2}
+      propertyPath: moneyAnimation.text
+      value: 
+      objectReference: {fileID: 484134392}
+    - target: {fileID: 114054497351420908, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
+        type: 2}
       propertyPath: waveText
       value: 
       objectReference: {fileID: 1833277959}
+    - target: {fileID: 114054497351420908, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
+        type: 2}
+      propertyPath: buildModeCanvas
+      value: 
+      objectReference: {fileID: 196121182}
     - target: {fileID: 114054497351420908, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
         type: 2}
       propertyPath: timerText

@@ -40,15 +40,14 @@ public class LevelManagerScript : MonoBehaviour
         if (buildMode)
         {
             if (Time.time > baseTimer) ToggleBuildMode(false);
-            else uIManager.UpdateWaveText(Mathf.CeilToInt(baseTimer - Time.time));
-
-            Debug.LogWarning("Unfinished Script");
+            else uIManager.UpdateBuildModeTimer(Mathf.CeilToInt(baseTimer - Time.time));
         }
     }
 
     public void ToggleBuildMode(bool toggle)
     {
         buildMode = toggle;
+        uIManager.ToggleBuildModeUI(toggle);
 
         if (buildMode) baseTimer = buildTimer + Time.time;
         else waveManager.StartWave();
@@ -63,7 +62,7 @@ public class LevelManagerScript : MonoBehaviour
     public void UpdateMoney(int money)
     {
         currentMoney += money;
-        uIManager.UpdateMoneyText(currentMoney);
+        uIManager.UpdateMoneyText(currentMoney, money);
     }
 
     public void GameOver()
