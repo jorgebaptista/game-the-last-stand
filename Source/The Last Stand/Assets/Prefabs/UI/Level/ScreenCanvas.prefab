@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224650631226368418}
   m_Layer: 5
-  m_Name: Trap Buttons
+  m_Name: '*Trap Buttons'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1454,7 +1454,7 @@ GameObject:
   - component: {fileID: 114214282552977948}
   - component: {fileID: 114915677700671032}
   m_Layer: 5
-  m_Name: _ScreenCanvas
+  m_Name: ScreenCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

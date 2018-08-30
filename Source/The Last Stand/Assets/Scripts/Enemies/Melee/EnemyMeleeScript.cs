@@ -33,7 +33,10 @@ public abstract class EnemyMeleeScript : EnemyScript
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable damageable = collision.GetComponent<IDamageable>();
-        if (damageable != null) damageable.TakeDamage(currentDamage); 
+        if (collision.CompareTag("Player"))
+        {
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null) damageable.TakeDamage(currentDamage);
+        }
     }
 }

@@ -133,6 +133,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
     }
     #endregion
 
+    #region Life
     public void TakeDamage(float damage)
     {
         if (isAlive == true)
@@ -159,4 +160,5 @@ public class BallistaScript : MonoBehaviour, IDamageable
         uIManager.UpdateLifeBar(currentLife / life);
         uIManager.UpdateAmmoImages(currentAmmo);
     }
+    #endregion
 }

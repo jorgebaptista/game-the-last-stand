@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 public abstract class EnemyScript : MonoBehaviour
 {
@@ -35,9 +32,18 @@ public abstract class EnemyScript : MonoBehaviour
     [Header("LifeBar Settings")]
     [Space]
     [SerializeField]
+    private float lifeBarSpeed = 5f;
+    [SerializeField]
     private Image lifeBarImage;
     [SerializeField]
-    private float lifeBarSpeed = 5f;
+    private GameObject lifeBarCanvas;
+
+    [Header("Death Settings")]
+    [Space]
+    [SerializeField]
+    private float fadeSpeed = 2f;
+    [SerializeField]
+    private float burySpeed = 80f;
 
     protected bool isAlive, isAttacking;
 
@@ -47,6 +53,7 @@ public abstract class EnemyScript : MonoBehaviour
 
     private Collider2D myCollider2D;
     protected Rigidbody2D myRigidBody2D;
+    private SpriteRenderer mySpriteRenderer;
     protected Animator myAnimator;
 
     private LevelManagerScript LevelManager;
@@ -58,6 +65,7 @@ public abstract class EnemyScript : MonoBehaviour
     {
         myCollider2D = GetComponent<Collider2D>();
         myRigidBody2D = GetComponent<Rigidbody2D>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
         myAnimator = GetComponent<Animator>();
 
         LevelManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
@@ -73,10 +81,12 @@ public abstract class EnemyScript : MonoBehaviour
         currentAttackCooldown = attackCooldown;
         currentMoveSpeed = moveSpeed;
 
+        lifeBarCanvas.SetActive(true);
         lifeBarImage.fillAmount = 1f;
 
         myCollider2D.enabled = true;
         myRigidBody2D.isKinematic = false;
+        mySpriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     public void UpdateStats(float lifeMultiplier, float damageMultiplier, float attackSpeedMultiplier,float speedMultiplier)
@@ -90,7 +100,6 @@ public abstract class EnemyScript : MonoBehaviour
     }
     #endregion
 
-#region Main
     protected virtual void FixedUpdate()
     {
         if (isAlive && !isAttacking)
@@ -107,6 +116,7 @@ public abstract class EnemyScript : MonoBehaviour
 
     protected abstract void Attack();
 
+    #region Life
     public void TakeDamage(float damage)
     {
         if (isAlive)
@@ -136,11 +146,14 @@ public abstract class EnemyScript : MonoBehaviour
             lifeBarImage.fillAmount = Mathf.MoveTowards(lifeBarImage.fillAmount, factor, lifeBarSpeed * Time.deltaTime);
             yield return null;
         }
+
+        if (lifeBarImage.fillAmount == 0) lifeBarCanvas.SetActive(false);
     }
 
     protected virtual void Die()
     {
         isAlive = false;
+        myRigidBody2D.velocity = new Vector2(0, myRigidBody2D.velocity.y);
 
         myCollider2D.enabled = false;
         myRigidBody2D.isKinematic = true;
@@ -148,13 +161,31 @@ public abstract class EnemyScript : MonoBehaviour
         LevelManager.UpdateMoney(money);
         waveManager.UpdateEnemiesAlive();
 
-        //myAnimator.SetTrigger("Die");
-        Debug.LogWarning("Unfinished Script.");
+        myAnimator.SetTrigger("Die");
+        myAnimator.SetBool("Is Alive", false);
+    }
+
+    public void StartFade()
+    {
+        StartCoroutine(FadeOut());
+    }
+
+    private IEnumerator FadeOut()
+    {
+        myRigidBody2D.velocity = new Vector2(0, -burySpeed * Time.deltaTime);
+
+        while (mySpriteRenderer.color.a != 0)
+        {
+            mySpriteRenderer.color = new Color(1f, 1f, 1f, Mathf.MoveTowards(mySpriteRenderer.color.a, 0f, fadeSpeed * Time.deltaTime));
+            yield return null;
+        }
+
         Dismiss();
     }
 
     private void Dismiss()
     {
+        myAnimator.SetBool("Is Alive", true);
         gameObject.SetActive(false);
     }
     #endregion

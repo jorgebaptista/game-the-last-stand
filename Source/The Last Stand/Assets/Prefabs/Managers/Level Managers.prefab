@@ -455,7 +455,7 @@ MonoBehaviour:
     amount: 5
     lifeMultiplier: 1
     damageMultiplier: 1
-    attackCooldownMultiplier: 1
+    attackCooldownMultiplier: 0
     speedMultiplier: 1
     probability: 100
 --- !u!114 &114553200329786482

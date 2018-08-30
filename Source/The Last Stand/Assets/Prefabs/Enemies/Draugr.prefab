@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114957362766917952}
   - component: {fileID: 114372643791203844}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: LifeBar Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 222937354713237118}
   - component: {fileID: 114518741615149656}
   m_Layer: 5
-  m_Name: HeathBarBack
+  m_Name: LifeBar Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 222889034294107814}
   - component: {fileID: 114349076414592366}
   m_Layer: 5
-  m_Name: HeathBarFront
+  m_Name: LifeBar Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +246,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -257,7 +257,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2.5}
+  m_Size: {x: 1.5, y: 2.4}
   m_EdgeRadius: 0
 --- !u!61 &61065057091229240
 BoxCollider2D:
@@ -271,7 +271,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.25, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -282,7 +282,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
 --- !u!95 &95423817588647878
 Animator:
@@ -393,8 +393,11 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  lifeBarImage: {fileID: 114349076414592366}
   lifeBarSpeed: 5
+  lifeBarImage: {fileID: 114349076414592366}
+  lifeBarCanvas: {fileID: 1500344574544666}
+  fadeSpeed: 2
+  burySpeed: 80
   attackTrigger: {fileID: 61065057091229240}
   pushBackForce: 200
   checkRadius: 0.1
@@ -500,7 +503,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1455882195
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &224152875975936500
