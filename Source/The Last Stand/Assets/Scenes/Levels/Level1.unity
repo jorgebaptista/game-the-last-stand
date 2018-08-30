@@ -210,6 +210,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114602741172787896, guid: 59636c756a1110242b8233004e7af09a,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 767527925}
+    - target: {fileID: 114922153217027468, guid: 59636c756a1110242b8233004e7af09a,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 767527925}
     - target: {fileID: 114083162488541614, guid: 59636c756a1110242b8233004e7af09a,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1191,7 +1201,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1374575509551880, guid: fc630c22f6598ea4a8a9ba68ae6224d5, type: 2}
       propertyPath: m_Name
-      value: '*Managers'
+      value: Managers
       objectReference: {fileID: 0}
     - target: {fileID: 114054497351420908, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
         type: 2}

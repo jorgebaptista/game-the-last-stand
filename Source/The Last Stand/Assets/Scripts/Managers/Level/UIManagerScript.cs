@@ -149,4 +149,16 @@ public class UIManagerScript : MonoBehaviour
         pauseCanvas.SetActive(false);
     }
     #endregion
+
+    #region Scene Manager Calls
+    public void LoadScene(string scene)
+    {
+        SceneManagerScript.instance.LoadScene(scene);
+    }
+
+    public void RestartScene()
+    {
+        SceneManagerScript.instance.RestartScene();
+    }
+    #endregion
 }
