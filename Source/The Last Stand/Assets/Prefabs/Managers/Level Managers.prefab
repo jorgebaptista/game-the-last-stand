@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4139775916466096}
   - component: {fileID: 114298136833448096}
   m_Layer: 0
-  m_Name: PoolManager
+  m_Name: Pool Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4720357999196422}
   - component: {fileID: 114004477858588386}
   m_Layer: 0
-  m_Name: LevelManager
+  m_Name: Level Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 4652095040468410}
   - component: {fileID: 114054497351420908}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,7 +402,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 3
-  enemyList: []
+  enemyList:
+  - enemyType: 0
+    amount: 2
+    lifeMultiplier: 0
+    damageMultiplier: 0
+    attackCooldownMultiplier: 0
+    speedMultiplier: 0
+    probability: 0
 --- !u!114 &114247443945614806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -415,7 +422,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 3
-  enemyList: []
+  enemyList:
+  - enemyType: 0
+    amount: 2
+    lifeMultiplier: 0
+    damageMultiplier: 0
+    attackCooldownMultiplier: 0
+    speedMultiplier: 0
+    probability: 0
 --- !u!114 &114298136833448096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -493,4 +507,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 3
-  enemyList: []
+  enemyList:
+  - enemyType: 0
+    amount: 2
+    lifeMultiplier: 0
+    damageMultiplier: 0
+    attackCooldownMultiplier: 0
+    speedMultiplier: 0
+    probability: 0
