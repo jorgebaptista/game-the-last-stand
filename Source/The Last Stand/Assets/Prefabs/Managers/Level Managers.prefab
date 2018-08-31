@@ -379,17 +379,6 @@ MonoBehaviour:
     speedMultiplier: 0
     probability: 0
     isActiveThisWave: 0
-  - enemyType: 1
-    prefab: {fileID: 1489650391581504, guid: b0885fdfface0df47b8dabe6dc3a4b39, type: 2}
-    poolID: 0
-    amount: 0
-    currentAmount: 0
-    lifeMultiplier: 0
-    damageMultiplier: 0
-    attackCooldownMultiplier: 0
-    speedMultiplier: 0
-    probability: 0
-    isActiveThisWave: 0
   - enemyType: 2
     prefab: {fileID: 1489650391581504, guid: b0885fdfface0df47b8dabe6dc3a4b39, type: 2}
     poolID: 0
@@ -455,9 +444,16 @@ MonoBehaviour:
     amount: 5
     lifeMultiplier: 1
     damageMultiplier: 1
-    attackCooldownMultiplier: 0
+    attackCooldownMultiplier: 1
     speedMultiplier: 1
-    probability: 100
+    probability: 80
+  - enemyType: 2
+    amount: 2
+    lifeMultiplier: 1
+    damageMultiplier: 1
+    attackCooldownMultiplier: 1
+    speedMultiplier: 1
+    probability: 20
 --- !u!114 &114553200329786482
 MonoBehaviour:
   m_ObjectHideFlags: 1

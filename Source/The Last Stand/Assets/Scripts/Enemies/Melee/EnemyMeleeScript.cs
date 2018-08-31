@@ -5,7 +5,12 @@ public abstract class EnemyMeleeScript : EnemyScript
     [Header("Attack Settings")]
     [Space]
     [SerializeField]
-    private BoxCollider2D attackTrigger;
+    protected BoxCollider2D attackTrigger;
+
+    public virtual void ToggleAttackTrigger(bool enabled)
+    {
+        attackTrigger.enabled = enabled;
+    }
 
     protected override void ResetStats()
     {
@@ -19,24 +24,9 @@ public abstract class EnemyMeleeScript : EnemyScript
         myAnimator.SetTrigger("Attack");
     }
 
-    public virtual void ToggleAttackTrigger(bool enabled)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        attackTrigger.enabled = enabled;
-
-        Debug.LogWarning("Unfinished Script.");
-        //if (!enabled)
-        //{
-        //    isAttacking = false;
-        //    baseTimer = Time.time;
-        //}
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            IDamageable damageable = collision.GetComponent<IDamageable>();
-            if (damageable != null) damageable.TakeDamage(currentDamage);
-        }
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (damageable != null) damageable.TakeDamage(currentDamage);
     }
 }

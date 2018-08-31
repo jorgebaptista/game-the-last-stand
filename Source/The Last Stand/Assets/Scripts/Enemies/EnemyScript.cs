@@ -75,6 +75,7 @@ public abstract class EnemyScript : MonoBehaviour
     protected virtual void ResetStats()
     {
         isAlive = true;
+        isAttacking = false;
 
         currentLife = life;
         currentDamage = damage;
@@ -110,7 +111,7 @@ public abstract class EnemyScript : MonoBehaviour
             }
             else myRigidBody2D.velocity = new Vector2(transform.right.x * currentMoveSpeed, myRigidBody2D.velocity.y);
 
-            myAnimator.SetFloat("Horizontal", Mathf.Abs(myRigidBody2D.velocity.x));
+            myAnimator.SetFloat("Speed", Mathf.Abs(myRigidBody2D.velocity.x));
         }
     }
 
@@ -153,16 +154,16 @@ public abstract class EnemyScript : MonoBehaviour
     protected virtual void Die()
     {
         isAlive = false;
-        myRigidBody2D.velocity = new Vector2(0, myRigidBody2D.velocity.y);
+        myRigidBody2D.velocity = Vector2.zero;
+
+        myAnimator.SetBool("Is Alive", false);
+        myAnimator.SetTrigger("Die");
 
         myCollider2D.enabled = false;
         myRigidBody2D.isKinematic = true;
 
         LevelManager.UpdateMoney(money);
         waveManager.UpdateEnemiesAlive();
-
-        myAnimator.SetTrigger("Die");
-        myAnimator.SetBool("Is Alive", false);
     }
 
     public void StartFade()

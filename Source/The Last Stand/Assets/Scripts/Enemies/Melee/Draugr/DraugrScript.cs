@@ -30,7 +30,20 @@ public class DraugrScript : EnemyMeleeScript
         if (isGrounded)
         {
             base.FixedUpdate();
+
+            if (!isAlive) myRigidBody2D.velocity = new Vector2(0, myRigidBody2D.velocity.y);
         }
+    }
+
+    protected override void Die()
+    {
+        StartCoroutine(WaitUntilGrounded());
+    }
+
+    private IEnumerator WaitUntilGrounded()
+    {
+        yield return new WaitUntil(() => isGrounded);
+        base.Die();
     }
 
     public override void ToggleAttackTrigger(bool enabled)
@@ -47,6 +60,14 @@ public class DraugrScript : EnemyMeleeScript
     public void PushBack()
     {
         myRigidBody2D.AddForce(new Vector2(-pushBackForce * transform.right.x, pushBackForce));
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            base.OnTriggerEnter2D(collision);
+        }
     }
 
     #region Debug
