@@ -20,7 +20,7 @@ public class EnemyDeathBehaviour : StateMachineBehaviour
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        if (!isDone && animatorStateInfo.normalizedTime > fadeTimer)
+        if (!isDone && animatorStateInfo.normalizedTime >= fadeTimer)
         {
             animator.GetComponent<EnemyScript>().StartFade();
             isDone = true;

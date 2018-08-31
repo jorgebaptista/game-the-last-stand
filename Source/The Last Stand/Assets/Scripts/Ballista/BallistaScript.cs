@@ -8,8 +8,11 @@ public class BallistaScript : MonoBehaviour, IDamageable
     [Space]
     [SerializeField]
     private float life = 100f;
+    [SerializeField]
+    private float damage = 50f;
 
     [Space]
+    [SerializeField]
     private int ammo = 4;
     [SerializeField]
     private float fireRate = 0.5f;
@@ -109,6 +112,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
         baseTimer = Time.time;
         GameObject bolt = poolManager.GetCachedPrefab(boltPoolID);
 
+        bolt.GetComponent<ProjectileScript>().ResetStats(damage);
         bolt.transform.position = shootPoint.position;
         bolt.transform.rotation = shootPoint.rotation;
         bolt.SetActive(true);

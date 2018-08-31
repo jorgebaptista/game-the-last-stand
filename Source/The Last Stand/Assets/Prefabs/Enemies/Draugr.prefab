@@ -386,7 +386,7 @@ MonoBehaviour:
   life: 80
   damage: 20
   attackCooldown: 0
-  moveSpeed: 1.5
+  moveSpeed: 2
   money: 50
   eyes: {fileID: 4512213245017130}
   eyeSight: {fileID: 4303948646460980}

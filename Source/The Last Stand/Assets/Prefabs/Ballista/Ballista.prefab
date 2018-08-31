@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4999004040587476}
   m_Layer: 0
-  m_Name: ShootPoint
+  m_Name: Shoot Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -183,7 +183,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 5}
+  m_Size: {x: 3.6, y: 5}
   m_EdgeRadius: 0
 --- !u!114 &114149755998902068
 MonoBehaviour:
@@ -197,6 +197,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
+  damage: 50
+  ammo: 4
   fireRate: 0.5
   reloadTimer: 2
   shootForce: 800

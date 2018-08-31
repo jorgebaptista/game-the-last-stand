@@ -18,12 +18,6 @@ public abstract class EnemyMeleeScript : EnemyScript
         attackTrigger.enabled = false;
     }
 
-    protected override void Attack()
-    {
-        isAttacking = true;
-        myAnimator.SetTrigger("Attack");
-    }
-
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         IDamageable damageable = collision.GetComponent<IDamageable>();

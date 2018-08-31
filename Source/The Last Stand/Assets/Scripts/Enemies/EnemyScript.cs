@@ -61,7 +61,7 @@ public abstract class EnemyScript : MonoBehaviour
 #endregion
 
 #region Init
-    private void Awake()
+    protected virtual void Awake()
     {
         myCollider2D = GetComponent<Collider2D>();
         myRigidBody2D = GetComponent<Rigidbody2D>();
@@ -87,7 +87,7 @@ public abstract class EnemyScript : MonoBehaviour
 
         myCollider2D.enabled = true;
         myRigidBody2D.isKinematic = false;
-        mySpriteRenderer.color = new Color(1, 1, 1, 1);
+        mySpriteRenderer.color = Color.white;
     }
 
     public void UpdateStats(float lifeMultiplier, float damageMultiplier, float attackSpeedMultiplier,float speedMultiplier)
@@ -115,7 +115,11 @@ public abstract class EnemyScript : MonoBehaviour
         }
     }
 
-    protected abstract void Attack();
+    private void Attack()
+    {
+        isAttacking = true;
+        myAnimator.SetTrigger("Attack");
+    }
 
     #region Life
     public void TakeDamage(float damage)

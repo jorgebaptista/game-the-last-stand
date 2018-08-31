@@ -26,6 +26,7 @@ public class WaveScript : MonoBehaviour
 
         [Space]
         [Tooltip("Percentage")]
+        [Range(0, 100)]
         public float probability;
     }
 
