@@ -30,8 +30,6 @@ public class DraugrScript : EnemyMeleeScript
         if (isGrounded)
         {
             base.FixedUpdate();
-
-            if (!isAlive) myRigidBody2D.velocity = new Vector2(0, myRigidBody2D.velocity.y);
         }
     }
 
@@ -46,28 +44,18 @@ public class DraugrScript : EnemyMeleeScript
         base.Die();
     }
 
-    public override void ToggleAttackTrigger(bool enabled)
+    public void DoAttack()
     {
-        base.ToggleAttackTrigger(enabled);
-        if (!enabled) PushBack();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(currentDamage);
+        }
+        else Debug.LogError("Ballista Script not assigned on OnTriggerEnter2D");
     }
 
-    public void DisableIsAttacking()
-    {
-        isAttacking = false;
-    }
-
-    public void PushBack()
+    private void PushBack()
     {
         myRigidBody2D.AddForce(new Vector2(-pushBackForce * transform.right.x, pushBackForce));
-    }
-
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            base.OnTriggerEnter2D(collision);
-        }
     }
 
     #region Debug

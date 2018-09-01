@@ -284,10 +284,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760c8c64098d52745bd06102e2e821d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 120
-  damage: 20
-  attackCooldown: 2
-  moveSpeed: 1
+  life: 200
+  damage: 30
+  attackCooldown: 3.5
+  moveSpeed: 0.8
   money: 150
   eyes: {fileID: 4512213245017130}
   eyeSight: {fileID: 4254359424644298}

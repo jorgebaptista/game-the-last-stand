@@ -463,24 +463,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce076855f8f4e346a4b9affcef6889b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnTimer: 3
+  spawnTimer: 2
   enemyList:
   - enemyType: 0
-    amount: 2
+    amount: 10
     lifeMultiplier: 1
     damageMultiplier: 1
     attackCooldownMultiplier: 1
     speedMultiplier: 1
-    probability: 50
+    probability: 70
   - enemyType: 1
     amount: 2
     lifeMultiplier: 1
     damageMultiplier: 1
     attackCooldownMultiplier: 1
     speedMultiplier: 1
-    probability: 40
+    probability: 20
   - enemyType: 2
-    amount: 2
+    amount: 1
     lifeMultiplier: 1
     damageMultiplier: 1
     attackCooldownMultiplier: 1

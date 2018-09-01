@@ -7,9 +7,16 @@ public abstract class EnemyMeleeScript : EnemyScript
     [SerializeField]
     protected BoxCollider2D attackTrigger;
 
-    public virtual void ToggleAttackTrigger(bool enabled)
+    protected IDamageable damageable;
+
+    public void ToggleAttackTrigger(bool enabled)
     {
         attackTrigger.enabled = enabled;
+        if (!enabled)
+        {
+            isAttacking = false;
+            baseTimer = Time.time;
+        }
     }
 
     protected override void ResetStats()
@@ -20,7 +27,9 @@ public abstract class EnemyMeleeScript : EnemyScript
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        IDamageable damageable = collision.GetComponent<IDamageable>();
-        if (damageable != null) damageable.TakeDamage(currentDamage);
+        if (collision.CompareTag("Player"))
+        {
+            damageable = collision.GetComponent<IDamageable>();
+        }
     }
 }

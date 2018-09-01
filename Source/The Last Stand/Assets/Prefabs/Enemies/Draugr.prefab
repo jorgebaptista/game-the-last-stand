@@ -383,10 +383,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d54719a1c7c99444a3555d519d4f870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 80
-  damage: 20
+  life: 50
+  damage: 10
   attackCooldown: 0
-  moveSpeed: 2
+  moveSpeed: 4.5
   money: 50
   eyes: {fileID: 4512213245017130}
   eyeSight: {fileID: 4303948646460980}

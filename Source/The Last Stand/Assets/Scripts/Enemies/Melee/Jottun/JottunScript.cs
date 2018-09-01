@@ -5,31 +5,13 @@ using UnityEditor;
 
 public class JottunScript : EnemyMeleeScript
 {
-    private IDamageable damageable;
-
-    public void DoubleAttack()
+    public void DoAttack()
     {
         if (damageable != null)
         {
-            damageable.TakeDamage(currentDamage);
-            damageable = null;
+            damageable.TakeDamage(currentDamage / 2);
         }
         else Debug.LogError("Ballista Script not assigned on OnTriggerEnter2D");
-    }
-
-    public void DisableAttack()
-    {
-        isAttacking = false;
-        baseTimer = Time.time;
-    }
-
-    protected override void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            damageable = collision.GetComponent<IDamageable>();
-            base.OnTriggerEnter2D(collision);
-        }
     }
 
     #region Debug

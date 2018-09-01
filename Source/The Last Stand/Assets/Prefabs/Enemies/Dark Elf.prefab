@@ -306,9 +306,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea834659de74c14eabba06cfc913b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 80
+  life: 100
   damage: 20
-  attackCooldown: 2
+  attackCooldown: 2.5
   moveSpeed: 1.5
   money: 50
   eyes: {fileID: 4380840562302536}

@@ -2,6 +2,13 @@
 
 public class DraugrAttackBehaviour : StateMachineBehaviour
 {
+    [Header("Settings")]
+    [SerializeField]
+    [Range(0, 1)]
+    private float isAttackingTimer = .6f;
+
+    private bool isDone;
+
     private EnemyMeleeScript enemyMelee;
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -9,10 +16,12 @@ public class DraugrAttackBehaviour : StateMachineBehaviour
         enemyMelee = enemyMelee ?? animator.GetComponent<EnemyMeleeScript>();
 
         enemyMelee.ToggleAttackTrigger(true);
+
+        isDone = false;
     }
 
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo animatorStateInfo, int layerIndex)
     {
-        enemyMelee.ToggleAttackTrigger(false);
+        if (!isDone && animatorStateInfo.normalizedTime > isAttackingTimer) enemyMelee.ToggleAttackTrigger(false);
     }
 }

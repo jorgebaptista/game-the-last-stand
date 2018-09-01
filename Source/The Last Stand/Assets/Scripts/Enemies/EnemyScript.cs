@@ -119,6 +119,8 @@ public abstract class EnemyScript : MonoBehaviour
     {
         isAttacking = true;
         myAnimator.SetTrigger("Attack");
+
+        myRigidBody2D.velocity = Vector2.zero;
     }
 
     #region Life
