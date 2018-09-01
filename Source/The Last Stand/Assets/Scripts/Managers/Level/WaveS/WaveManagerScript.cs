@@ -6,8 +6,8 @@ using UnityEngine;
 public enum EnemyType
 {
     Draugr,
-    Ranged,
-    Heavy
+    DarkElf,
+    Jottun
 }
 
 public class WaveManagerScript : MonoBehaviour

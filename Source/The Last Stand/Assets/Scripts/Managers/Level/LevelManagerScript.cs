@@ -9,8 +9,11 @@ public class LevelManagerScript : MonoBehaviour
     [SerializeField]
     private float buildTimer = 30f;
 
-    [Header("General - Debug")]
     [Space]
+    [SerializeField]
+    private int startingMoney = 0;
+
+    [HideInInspector]
     public int currentMoney = 0;
 
     [HideInInspector]
@@ -33,6 +36,7 @@ public class LevelManagerScript : MonoBehaviour
     private void Start()
     {
         ToggleBuildMode(true);
+        UpdateMoney(startingMoney);
     }
 
     private void FixedUpdate()
@@ -50,7 +54,11 @@ public class LevelManagerScript : MonoBehaviour
         uIManager.ToggleBuildModeUI(toggle);
 
         if (buildMode) baseTimer = buildTimer + Time.time;
-        else waveManager.StartWave();
+        else
+        {
+            uIManager.CollapseTrapMenu();
+            waveManager.StartWave();
+        }
     }
 
     public void TogglePause(bool toggle)

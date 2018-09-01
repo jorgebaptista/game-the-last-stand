@@ -45,6 +45,14 @@ public class UIManagerScript : MonoBehaviour
     [SerializeField]
     private Text timerText;
 
+    [Space]
+    [SerializeField]
+    private GameObject trapButtons;
+    [SerializeField]
+    private GameObject[] trapTooltips;
+    [SerializeField]
+    private GameObject trapBackButton;
+
     [Header("Pause Menu")]
     [Space]
     [SerializeField]
@@ -55,16 +63,22 @@ public class UIManagerScript : MonoBehaviour
     private GameObject[] pauseExtraMenus;
 
     private LevelManagerScript levelManager;
+    private TrapManagerScript trapManager;
     #endregion
 
     private void Awake()
     {
         levelManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
+        trapManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<TrapManagerScript>();
     }
 
     private void Update()
     {
-        if (Input.GetButtonDown("Cancel")) TogglePauseScreen();
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (trapBackButton.activeInHierarchy) CollapseTrapMenu();
+            else TogglePauseScreen();
+        }
     }
 
     #region (HUD) - Heads Up Display
@@ -125,6 +139,18 @@ public class UIManagerScript : MonoBehaviour
     public void UpdateBuildModeTimer(int time)
     {
         timerText.text = time.ToString();
+    }
+
+    public void CollapseTrapMenu(bool enabled = true)
+    {
+        trapBackButton.SetActive(!enabled);
+        trapButtons.SetActive(enabled);
+
+        if (enabled)
+        {
+            foreach (GameObject tooltip in trapTooltips) tooltip.SetActive(false);
+            trapManager.HideTrapSpots();
+        }
     }
     #endregion
 

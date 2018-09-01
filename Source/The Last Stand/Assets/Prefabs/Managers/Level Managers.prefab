@@ -105,7 +105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1636452640940984
 GameObject:
   m_ObjectHideFlags: 1
@@ -117,6 +117,22 @@ GameObject:
   - component: {fileID: 114247443945614806}
   m_Layer: 0
   m_Name: Wave 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 0
+--- !u!1 &1698185546011306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4680620903993010}
+  - component: {fileID: 114831838467996316}
+  m_Layer: 0
+  m_Name: Trap Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,7 +153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1923519969165288
 GameObject:
   m_ObjectHideFlags: 1
@@ -235,6 +251,7 @@ Transform:
   - {fileID: 4720357999196422}
   - {fileID: 4652095040468410}
   - {fileID: 4139775916466096}
+  - {fileID: 4680620903993010}
   - {fileID: 4723030509654208}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -251,6 +268,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4723030509654208}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4680620903993010
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698185546011306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4661059453843848}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4714364621910828
 Transform:
@@ -294,7 +324,7 @@ Transform:
   - {fileID: 4151597018655260}
   - {fileID: 4832228274084190}
   m_Father: {fileID: 4661059453843848}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4832228274084190
 Transform:
@@ -350,6 +380,8 @@ MonoBehaviour:
   waveText: {fileID: 0}
   buildModeCanvas: {fileID: 0}
   timerText: {fileID: 0}
+  trapButtons: {fileID: 0}
+  trapBackButton: {fileID: 0}
   pauseCanvas: {fileID: 0}
   pauseMenu: {fileID: 0}
   pauseExtraMenus:
@@ -513,6 +545,27 @@ MonoBehaviour:
     attackCooldownMultiplier: 1
     speedMultiplier: 1
     probability: 0
+--- !u!114 &114831838467996316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1698185546011306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d39e6574bd01c4895f1039f225dfb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapList:
+  - trapType: 0
+    hotspotSprite: {fileID: 21300000, guid: 0fa2bf76d5fa61841a1dcb3cce2b79e1, type: 3}
+    prefab: {fileID: 0}
+  - trapType: 1
+    hotspotSprite: {fileID: 21300000, guid: bd6d6b58d9e47684f863ed2c7efe9201, type: 3}
+    prefab: {fileID: 0}
+  - trapType: 2
+    hotspotSprite: {fileID: 21300000, guid: 499b19dce3d797840a1732e1f39474a7, type: 3}
+    prefab: {fileID: 0}
 --- !u!114 &114939013448635518
 MonoBehaviour:
   m_ObjectHideFlags: 1

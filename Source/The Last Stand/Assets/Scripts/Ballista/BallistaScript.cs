@@ -96,8 +96,6 @@ public class BallistaScript : MonoBehaviour, IDamageable
 
     private void Flip()
     {
-        Debug.LogWarning("Unfinished Script.");
-
         isFacingRight = !isFacingRight;
         mySpriteRenderer.flipY = !mySpriteRenderer.flipY;
 
