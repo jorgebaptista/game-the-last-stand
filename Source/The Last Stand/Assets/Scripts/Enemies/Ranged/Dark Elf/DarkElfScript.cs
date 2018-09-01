@@ -25,7 +25,7 @@ public class DarkElfScript : EnemyScript
         base.Awake();
 
         poolManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<PoolManagerScript>();
-        arrowPoolID = poolManager.PreCache(arrowPrefab);
+        arrowPoolID = poolManager.PreCache(arrowPrefab, 4);
     }
 
     private void Shoot()

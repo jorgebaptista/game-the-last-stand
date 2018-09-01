@@ -11,6 +11,8 @@ public abstract class ProjectileScript : MonoBehaviour
 
     protected float currentDamage;
 
+    private bool isActive;
+
     private SpriteRenderer mySpriteRenderer;
     private Rigidbody2D myRigidBody2D;
     private Collider2D myCollider2D;
@@ -22,9 +24,22 @@ public abstract class ProjectileScript : MonoBehaviour
         myCollider2D = GetComponent<Collider2D>();
     }
 
+    private void OnEnable()
+    {
+        Invoke("Activate", 0.05f);
+    }
+
+    private void Activate()
+    {
+        if (isActiveAndEnabled) isActive = true;
+    }
+
     private void FixedUpdate()
     {
-        transform.Rotate(new Vector3(0, 0, 360.0f - Vector3.Angle(transform.right, myRigidBody2D.velocity.normalized)));
+        Vector3 myCameraPosition = Camera.main.WorldToViewportPoint(transform.position);
+        if (myCameraPosition.x < -0.1f || myCameraPosition.x > 1.1f) Dismiss();
+
+        if (isActive) transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(myRigidBody2D.velocity.y, myRigidBody2D.velocity.x) * Mathf.Rad2Deg));
     }
 
     public void ResetStats(float damage)
@@ -43,6 +58,8 @@ public abstract class ProjectileScript : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
+        isActive = false;
+
         myCollider2D.enabled = false;
         myRigidBody2D.velocity = Vector2.zero;
         myRigidBody2D.isKinematic = true;
@@ -56,13 +73,9 @@ public abstract class ProjectileScript : MonoBehaviour
         Dismiss();
     }
 
-    private void OnBecameInvisible()
-    {
-        Dismiss();
-    }
-
     private void Dismiss()
     {
+        isActive = false;
         gameObject.SetActive(false);
     }
 }

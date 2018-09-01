@@ -116,7 +116,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
         bolt.transform.position = shootPoint.position;
         bolt.transform.rotation = shootPoint.rotation;
         bolt.SetActive(true);
-        bolt.GetComponent<Rigidbody2D>().AddForce(shootPoint.up * shootForce);
+        bolt.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * shootForce);
 
         --currentAmmo;
 
