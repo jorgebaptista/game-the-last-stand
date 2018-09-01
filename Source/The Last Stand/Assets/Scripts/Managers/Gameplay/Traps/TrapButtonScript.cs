@@ -8,13 +8,13 @@ public class TrapButtonScript : MonoBehaviour
     [Header("Trap Settings")]
     [Space]
     [SerializeField]
-    private int price = 500;
-    [SerializeField]
-    private Text priceText;
-
+    private TrapType trapType;
+    
     [Space]
     [SerializeField]
-    private TrapType trapType;
+    private Text priceText;
+    [SerializeField]
+    private Text highlightPriceText;
 
     [Space]
     [SerializeField]
@@ -26,6 +26,8 @@ public class TrapButtonScript : MonoBehaviour
     [SerializeField]
     private Image myImage;
 
+    private int price;
+
     private LevelManagerScript levelManager;
     private UIManagerScript uIManager;
     private TrapManagerScript trapManager;
@@ -36,19 +38,31 @@ public class TrapButtonScript : MonoBehaviour
         levelManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
         uIManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<UIManagerScript>();
 
+        price = trapManager.GetPrice(trapType);
+
         priceText.text = price.ToString();
+    }
+
+    private void Start()
+    {
+        Invoke("UpdateButton", 0.01f);
     }
 
     private void OnEnable()
     {
-        if (levelManager.currentMoney >= price) myImage.sprite = activeSprite;
-        else myImage.sprite = inactiveSprite;
+        UpdateButton();
+    }
+
+    private void UpdateButton()
+    {
+        myImage.sprite = levelManager.currentMoney >= price ? activeSprite : inactiveSprite;
     }
 
     public void HighlightTraps()
     {
         if(levelManager.currentMoney >= price)
         {
+            highlightPriceText.text = price.ToString();
             uIManager.CollapseTrapMenu(false);
             trapManager.HighlightSpots(trapType);
         }

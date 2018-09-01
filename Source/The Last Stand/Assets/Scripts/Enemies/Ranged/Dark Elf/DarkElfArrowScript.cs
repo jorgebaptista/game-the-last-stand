@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class DarkElfArrowScript : ProjectileScript
 {
+    private void OnBecameInvisible()
+    {
+        Dismiss();
+    }
+
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) collision.GetComponent<IDamageable>().TakeDamage(currentDamage);

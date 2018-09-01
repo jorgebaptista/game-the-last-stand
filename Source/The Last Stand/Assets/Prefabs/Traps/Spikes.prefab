@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4339631907184996}
   - component: {fileID: 212925373509122002}
+  - component: {fileID: 114848228115206600}
   m_Layer: 0
   m_Name: Spikes
   m_TagString: Untagged
@@ -89,6 +90,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114848228115206600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1551525791584538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b0f67977c26fb48898e079d2922731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212136611686666374
 SpriteRenderer:
   m_ObjectHideFlags: 1

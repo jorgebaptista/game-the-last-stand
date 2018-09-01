@@ -34,11 +34,8 @@ public abstract class ProjectileScript : MonoBehaviour
         if (isActiveAndEnabled) isActive = true;
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
-        Vector3 myCameraPosition = Camera.main.WorldToViewportPoint(transform.position);
-        if (myCameraPosition.x < -0.1f || myCameraPosition.x > 1.1f) Dismiss();
-
         if (isActive) transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(myRigidBody2D.velocity.y, myRigidBody2D.velocity.x) * Mathf.Rad2Deg));
     }
 
@@ -73,7 +70,7 @@ public abstract class ProjectileScript : MonoBehaviour
         Dismiss();
     }
 
-    private void Dismiss()
+    protected void Dismiss()
     {
         isActive = false;
         gameObject.SetActive(false);
