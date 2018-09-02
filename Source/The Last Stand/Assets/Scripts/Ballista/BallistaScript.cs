@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BallistaScript : MonoBehaviour, IDamageable
 {
@@ -9,17 +10,21 @@ public class BallistaScript : MonoBehaviour, IDamageable
     [SerializeField]
     private float life = 100f;
     [SerializeField]
-    private float damage = 50f;
+    private float maxDamage = 100f;
+    [SerializeField]
+    private float minDamage = 20f;
 
     [Space]
     [SerializeField]
     private int ammo = 4;
     [SerializeField]
-    private float fireRate = 0.5f;
+    private float fireRate = 0.25f;
     [SerializeField]
     private float reloadTimer = 2f;
     [SerializeField]
-    private float shootForce = 800f;
+    private float maxShootForce = 1200f;
+    [SerializeField]
+    private float minShootForce = 500f;
 
     [Space]
     [SerializeField]
@@ -34,6 +39,13 @@ public class BallistaScript : MonoBehaviour, IDamageable
     [SerializeField]
     private GameObject boltPrefab;
 
+    [Header("Reload Bar")]
+    [Space]
+    [SerializeField]
+    private Image reloadBarImage;
+    [SerializeField]
+    private GameObject reloadBarCanvas;
+
     [Header("References")]
     [Space]
     [SerializeField]
@@ -42,13 +54,16 @@ public class BallistaScript : MonoBehaviour, IDamageable
     private int currentAmmo, boltPoolID;
 
     private float currentLife;
-    private float pivotOffset = 0.31f;
-    private float baseTimer;
+    private float currentDamage;
+    private float currentShootForce;
 
-    private bool isAlive, isReloading;
+    private float pivotOffset = 0.31f;
+
+    private bool isAlive, canShoot;
     private bool isFacingRight = true;
 
     private SpriteRenderer mySpriteRenderer;
+    private Animator myAnimator;
 
     private LevelManagerScript levelManager;
     private UIManagerScript uIManager;
@@ -63,12 +78,15 @@ public class BallistaScript : MonoBehaviour, IDamageable
         poolManager = gameController.GetComponentInChildren<PoolManagerScript>();
 
         mySpriteRenderer = ballistaHead.GetComponent<SpriteRenderer>();
+        myAnimator = ballistaHead.GetComponent<Animator>();
 
         isAlive = true;
 
         currentLife = life;
         currentAmmo = ammo;
         boltPoolID = poolManager.PreCache(boltPrefab);
+
+        canShoot = true;
         
         UpdateUI();
     }
@@ -77,20 +95,28 @@ public class BallistaScript : MonoBehaviour, IDamageable
     {
         if (isAlive && !levelManager.buildMode && !levelManager.isPaused)
         {
-            if ((Input.GetButtonDown("Shoot")) && Time.time > baseTimer + fireRate && !isReloading) Shoot();
+            if (canShoot)
+            {
+                if (Input.GetButton("Shoot")) myAnimator.SetBool("Is Charging", true);
+                if (Input.GetButtonUp("Shoot")) myAnimator.SetBool("Is Charging", false);
 
+                if (Input.GetButtonDown("Reload") && currentAmmo < ammo) StartCoroutine(Reload());
+            }
+
+            #region Rotation
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) - ballistaHead.position;
 
             float angle = Mathf.Atan2(mousePosition.y - pivotOffset, mousePosition.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            ballistaHead.rotation = instantRotation ? Quaternion.Slerp(ballistaHead.rotation, targetRotation, rotationSpeed * Time.deltaTime) : targetRotation;
+            ballistaHead.rotation = !instantRotation ? Quaternion.Slerp(ballistaHead.rotation, targetRotation, rotationSpeed * Time.deltaTime) : targetRotation;
 
             if ((Input.mousePosition.x < Camera.main.WorldToScreenPoint(transform.position).x && isFacingRight)
                 || Input.mousePosition.x > Camera.main.WorldToScreenPoint(transform.position).x && !isFacingRight)
             {
                 Flip();
             }
+            #endregion
         }
     }
 
@@ -105,33 +131,54 @@ public class BallistaScript : MonoBehaviour, IDamageable
     }
 
     #region Attack
-    private void Shoot()
+    public void SetShootStats(float chargePercent)
     {
-        baseTimer = Time.time;
+        currentDamage = maxDamage * chargePercent > minDamage ? maxDamage * chargePercent : minDamage;
+        currentShootForce = maxShootForce * chargePercent > minShootForce ? maxShootForce * chargePercent : minShootForce;
+    }
+
+    public void Shoot()
+    {
         GameObject bolt = poolManager.GetCachedPrefab(boltPoolID);
 
-        bolt.GetComponent<ProjectileScript>().ResetStats(damage);
+        bolt.GetComponent<ProjectileScript>().ResetStats(currentDamage);
         bolt.transform.position = shootPoint.position;
         bolt.transform.rotation = shootPoint.rotation;
         bolt.SetActive(true);
-        bolt.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * shootForce);
+        bolt.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * currentShootForce);
 
         --currentAmmo;
 
-        if (currentAmmo == 0)
-        {
-            StartCoroutine(Reload());
-        }
+        if (currentAmmo == 0) StartCoroutine(Reload());
+        else Invoke("ToggleCanShoot", fireRate);
+
         UpdateUI();
+    }
+
+    private void ToggleCanShoot()
+    {
+        canShoot = true;
+        myAnimator.SetTrigger("Ready");
     }
 
     private IEnumerator Reload()
     {
-        isReloading = true;
-        yield return new WaitForSeconds(reloadTimer);
+        canShoot = false;
+        float timeToReload = reloadTimer - (reloadTimer * ((float)currentAmmo / ammo));
+        float timer = Time.time + timeToReload;
+        reloadBarCanvas.SetActive(true);
+
+        while (timer > Time.time)
+        {
+            reloadBarImage.fillAmount = Mathf.Clamp01((timer - Time.time) / timeToReload);
+            yield return null;
+        }
+
+        reloadBarCanvas.SetActive(false);
         currentAmmo = ammo;
         UpdateUI();
-        isReloading = false;
+        canShoot = true;
+        myAnimator.SetTrigger("Ready");
     }
     #endregion
 

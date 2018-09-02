@@ -11,7 +11,7 @@ public abstract class ProjectileScript : MonoBehaviour
 
     protected float currentDamage;
 
-    protected bool isActive;
+    protected bool isActive, canRotate;
 
     private SpriteRenderer mySpriteRenderer;
     private Rigidbody2D myRigidBody2D;
@@ -31,16 +31,17 @@ public abstract class ProjectileScript : MonoBehaviour
 
     private void Activate()
     {
-        if (isActiveAndEnabled) isActive = true;
+        if (isActiveAndEnabled) canRotate = true;
     }
 
     protected virtual void FixedUpdate()
     {
-        if (isActive) transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(myRigidBody2D.velocity.y, myRigidBody2D.velocity.x) * Mathf.Rad2Deg));
+        if (canRotate) transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(myRigidBody2D.velocity.y, myRigidBody2D.velocity.x) * Mathf.Rad2Deg));
     }
 
     public void ResetStats(float damage)
     {
+        isActive = true;
         currentDamage = damage;
 
         mySpriteRenderer.color = Color.white;
@@ -56,6 +57,7 @@ public abstract class ProjectileScript : MonoBehaviour
 
     private IEnumerator FadeOut()
     {
+        canRotate = false;
         isActive = false;
 
         myCollider2D.enabled = false;
@@ -73,6 +75,7 @@ public abstract class ProjectileScript : MonoBehaviour
 
     protected void Dismiss()
     {
+        canRotate = false;
         isActive = false;
         gameObject.SetActive(false);
     }
