@@ -53,6 +53,9 @@ TagManager:
   - name: Enemy
     uniqueID: 2482658819
     locked: 0
+  - name: Trap
+    uniqueID: 689141735
+    locked: 0
   - name: Projectile
     uniqueID: 4103568085
     locked: 0

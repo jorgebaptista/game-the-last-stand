@@ -11,7 +11,7 @@ public abstract class ProjectileScript : MonoBehaviour
 
     protected float currentDamage;
 
-    private bool isActive;
+    protected bool isActive;
 
     private SpriteRenderer mySpriteRenderer;
     private Rigidbody2D myRigidBody2D;
@@ -50,6 +50,7 @@ public abstract class ProjectileScript : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        isActive = false;
         StartCoroutine(FadeOut());
     }
 

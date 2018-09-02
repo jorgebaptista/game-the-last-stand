@@ -11,7 +11,7 @@ public class TrapScript : MonoBehaviour
     [SerializeField]
     protected Transform checkAreaB;
     [SerializeField]
-    private LayerMask enemyLayerMask;
+    protected LayerMask enemyLayerMask;
 
     private Animator myAnimator;
 
