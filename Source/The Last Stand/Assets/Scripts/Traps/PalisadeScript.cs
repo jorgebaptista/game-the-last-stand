@@ -9,6 +9,13 @@ public class PalisadeScript : MonoBehaviour, IDamageable
     [SerializeField]
     private float life = 100f;
 
+    [Space]
+    [SerializeField]
+    [Range(0, 1)]
+    private float damagedLifePercent = 0.3f;
+    [SerializeField]
+    private Sprite damagedSprite;
+
     [Header("Life Bar Settings")]
     [Space]
     [SerializeField]
@@ -22,8 +29,12 @@ public class PalisadeScript : MonoBehaviour, IDamageable
 
     private bool isAlive = true;
 
+    private SpriteRenderer mySpriteRenderer;
+
     private void Awake()
     {
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
+
         currentLife = life;
     }
 
@@ -33,6 +44,7 @@ public class PalisadeScript : MonoBehaviour, IDamageable
         {
             currentLife -= damage;
 
+            if (currentLife < life * damagedLifePercent) mySpriteRenderer.sprite = damagedSprite;
             if (currentLife <= 0) currentLife = 0;
 
             UpdateLifeBar();

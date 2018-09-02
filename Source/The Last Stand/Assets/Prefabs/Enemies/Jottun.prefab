@@ -288,7 +288,7 @@ MonoBehaviour:
   damage: 30
   attackCooldown: 3.5
   baseMoveSpeed: 1
-  money: 150
+  money: 200
   eyes: {fileID: 4512213245017130}
   eyeSight: {fileID: 4254359424644298}
   playerLayer:

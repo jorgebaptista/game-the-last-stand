@@ -159,6 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
+  damagedLifePercent: 0.3
+  damagedSprite: {fileID: 21300000, guid: 07bd301fb21f93248a257c48aa099838, type: 3}
   lifeBarSpeed: 5
   lifeBarImage: {fileID: 114896746330855434}
   lifeBarCanvas: {fileID: 1770389805004182}
