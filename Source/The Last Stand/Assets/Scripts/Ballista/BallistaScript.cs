@@ -39,6 +39,19 @@ public class BallistaScript : MonoBehaviour, IDamageable
     [SerializeField]
     private GameObject boltPrefab;
 
+    [Header("Repair Settings")]
+    [Space]
+    [SerializeField]
+    [Range(0, 1)]
+    private float repairPercent = .25f;
+    public int repairPrice = 200;
+
+    [Space]
+    [SerializeField]
+    private GameObject repairCanvas;
+    [SerializeField]
+    private RepairButtonScript repairButton;
+
     [Header("Reload Bar")]
     [Space]
     [SerializeField]
@@ -208,6 +221,28 @@ public class BallistaScript : MonoBehaviour, IDamageable
     {
         uIManager.UpdateLifeBar(currentLife / life);
         uIManager.UpdateAmmoImages(currentAmmo);
+    }
+    #endregion
+
+    #region Repair
+    public void ShowRepairCanvas(bool show = true)
+    {
+        if (show && currentLife < life) repairCanvas.SetActive(true);
+        else repairCanvas.SetActive(false);
+    }
+
+    public void Repair()
+    {
+        if (levelManager.currentMoney >= repairPrice)
+        {
+            levelManager.UpdateMoney(-repairPrice);
+            repairButton.UpdateButton();
+
+            currentLife += (life * repairPercent);
+            if (currentLife > life) currentLife = life;
+            UpdateUI();
+            ShowRepairCanvas();
+        }
     }
     #endregion
 }

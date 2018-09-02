@@ -13,6 +13,11 @@ public enum EnemyType
 public class WaveManagerScript : MonoBehaviour
 {
     #region Variables
+    [Header("Wave Management")]
+    [Space]
+    [SerializeField]
+    private float endWaveTimer = 1f;
+
     [Header("Enemies")]
     [Space]
     [SerializeField]
@@ -226,7 +231,9 @@ public class WaveManagerScript : MonoBehaviour
             SpawnEnemy(pickedEnemy);
         }
 
-        yield return new WaitUntil(() => enemiesAlive == 0); ;
+        yield return new WaitUntil(() => enemiesAlive == 0);
+
+        yield return new WaitForSeconds(endWaveTimer);
 
         EndWave();
         yield return null;

@@ -436,6 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2b07b4041a8df47991b32d73723ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endWaveTimer: 1
   enemyList:
   - enemyType: 0
     prefab: {fileID: 1489650391581504, guid: 083308e9aa47e7749a77a80b35c8af28, type: 2}
@@ -535,26 +536,19 @@ MonoBehaviour:
   spawnTimer: 2
   enemyList:
   - enemyType: 0
-    amount: 10
+    amount: 5
     lifeMultiplier: 1
     damageMultiplier: 1
     attackCooldownMultiplier: 1
     speedMultiplier: 1
-    probability: 70
+    probability: 100
   - enemyType: 1
-    amount: 2
-    lifeMultiplier: 1
-    damageMultiplier: 1
-    attackCooldownMultiplier: 1
-    speedMultiplier: 1
-    probability: 20
-  - enemyType: 2
     amount: 1
     lifeMultiplier: 1
     damageMultiplier: 1
     attackCooldownMultiplier: 1
     speedMultiplier: 1
-    probability: 10
+    probability: 0
 --- !u!114 &114553200329786482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -569,19 +563,19 @@ MonoBehaviour:
   spawnTimer: 3
   enemyList:
   - enemyType: 0
-    amount: 7
+    amount: 8
     lifeMultiplier: 1
     damageMultiplier: 1
     attackCooldownMultiplier: 0
     speedMultiplier: 1
-    probability: 100
+    probability: 70
   - enemyType: 1
-    amount: 2
+    amount: 4
     lifeMultiplier: 1
     damageMultiplier: 1
     attackCooldownMultiplier: 1
     speedMultiplier: 1
-    probability: 0
+    probability: 30
 --- !u!114 &114939013448635518
 MonoBehaviour:
   m_ObjectHideFlags: 1

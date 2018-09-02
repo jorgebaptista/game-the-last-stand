@@ -11,6 +11,11 @@ public class HoverTooltipScript : MonoBehaviour
     [SerializeField]
     private float tooltipTimer = 0.5f;
 
+    private void OnEnable()
+    {
+        tooltip.SetActive(false);
+    }
+
     public void ToggleTooltip(bool toggle)
     {
         if (toggle) Invoke("ShowTooltip", tooltipTimer);

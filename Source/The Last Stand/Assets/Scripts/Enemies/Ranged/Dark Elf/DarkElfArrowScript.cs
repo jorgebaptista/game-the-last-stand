@@ -11,7 +11,7 @@ public class DarkElfArrowScript : ProjectileScript
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) collision.GetComponent<IDamageable>().TakeDamage(currentDamage);
+        if (collision.CompareTag("Player") || collision.CompareTag("Palisade")) collision.GetComponent<IDamageable>().TakeDamage(currentDamage);
 
         base.OnTriggerEnter2D(collision);
     }

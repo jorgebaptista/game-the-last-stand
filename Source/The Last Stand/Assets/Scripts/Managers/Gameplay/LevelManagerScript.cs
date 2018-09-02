@@ -70,7 +70,7 @@ public class LevelManagerScript : MonoBehaviour
     public void UpdateMoney(int money)
     {
         currentMoney += money;
-        uIManager.UpdateMoneyText(currentMoney, money);
+        uIManager.UpdateMoneyText(currentMoney, money, money > 0);
     }
 
     public void GameOver()

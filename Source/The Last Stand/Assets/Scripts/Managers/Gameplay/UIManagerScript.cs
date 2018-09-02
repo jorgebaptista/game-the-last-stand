@@ -64,12 +64,14 @@ public class UIManagerScript : MonoBehaviour
 
     private LevelManagerScript levelManager;
     private TrapManagerScript trapManager;
+    private BallistaScript ballistaScript;
     #endregion
 
     private void Awake()
     {
         levelManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
         trapManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<TrapManagerScript>();
+        ballistaScript = GameObject.FindGameObjectWithTag("Player").GetComponent<BallistaScript>();
     }
 
     private void Update()
@@ -102,11 +104,11 @@ public class UIManagerScript : MonoBehaviour
         for (int i = 0; i < ammoImages.Length; i++) ammoImages[i].gameObject.SetActive(i < currentAmmo);
     }
 
-    public void UpdateMoneyText(int money, int moneyGained)
+    public void UpdateMoneyText(int money, int moneyGained, bool positive)
     {
         moneyText.text = money.ToString();
 
-        if (money > 0)
+        if (positive)
         {
             moneyAnimation.symbol.text = "+";
             moneyAnimation.symbol.color = Color.green;
@@ -134,6 +136,7 @@ public class UIManagerScript : MonoBehaviour
     public void ToggleBuildModeUI(bool toggle)
     {
         buildModeCanvas.SetActive(toggle);
+        ballistaScript.ShowRepairCanvas(toggle);
     }
 
     public void UpdateBuildModeTimer(int time)

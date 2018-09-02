@@ -27,7 +27,7 @@ public abstract class EnemyMeleeScript : EnemyScript
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Palisade"))
         {
             damageable = collision.GetComponent<IDamageable>();
         }

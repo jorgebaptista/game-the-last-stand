@@ -13,6 +13,6 @@ public class BallistaChargeEndBehaviour : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        ballista.SetShootStats(stateInfo.normalizedTime > 1 ? 1 : stateInfo.normalizedTime);
+        ballista.SetShootStats(Mathf.Clamp01(stateInfo.normalizedTime));
     }
 }
