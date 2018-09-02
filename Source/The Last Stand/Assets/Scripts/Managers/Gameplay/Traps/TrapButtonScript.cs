@@ -56,6 +56,7 @@ public class TrapButtonScript : MonoBehaviour
     private void UpdateButton()
     {
         myImage.sprite = levelManager.currentMoney >= price ? activeSprite : inactiveSprite;
+        priceText.color = levelManager.currentMoney >= price ? Color.white : Color.red;
     }
 
     public void HighlightTraps()

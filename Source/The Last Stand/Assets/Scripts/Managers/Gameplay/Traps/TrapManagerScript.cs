@@ -48,9 +48,6 @@ public class TrapManagerScript : MonoBehaviour
         [Space]
         public Sprite hotspotSprite;
         public GameObject prefab;
-
-        [Space]
-        public bool isCraftable;
     }
 
     private GameObject[] trapSpots;
@@ -62,54 +59,39 @@ public class TrapManagerScript : MonoBehaviour
 
     public void HighlightSpots(TrapType trapType)
     {
-        for (int i = 0; i < trapSpots.Length; ++i)
+        foreach (GameObject trapSpot in trapSpots)
         {
-            TrapSpotScript trapScript = trapSpots[i].GetComponent<TrapSpotScript>();
+            TrapSpotScript trapSpotScript = trapSpot.GetComponent<TrapSpotScript>();
 
+            //can be optimized
             TrapMode trapMode;
             if (trapType == TrapType.Palisade) trapMode = TrapMode.Defense;
             else trapMode = TrapMode.Offense;
 
-            if (trapScript.trapMode == trapMode)
+            if (trapSpotScript.trapMode == trapMode && trapSpotScript.isEmpty)
             {
-                if (trapScript.isEmpty)
+                foreach (TrapList trap in trapList)
                 {
-                    for (int j = 0; j < trapList.Length; ++j)
+                    if (trap.trapType == trapType)
                     {
-                        if (trapList[j].trapType == trapType)
-                        {
-                            trapScript.HighLight(trapType, trapList[j].hotspotSprite, 
-                                trapList[j].prefab, trapList[j].price,trapList[j].isCraftable);
-                            break;
-                        }
+                        trapSpotScript.HighLight(trapType, trap.hotspotSprite, trap.prefab, trap.price, trap.isCraftable);
+                        break;
                     }
                 }
-                else if (trapScript.isCraftable)
+            }
+            else if (trapSpotScript.isCraftable)
+            {
+                foreach (CraftList craft in craftList)
                 {
-                    for (int j = 0; j < craftList.Length; ++j)
+                    if (trapSpotScript.trapType == craft.trapType && trapType == craft.trapType2 || 
+                        trapSpotScript.trapType == craft.trapType2 && trapType == craft.trapType)
                     {
-                        if (trapScript.trapType == craftList[j].trapType && trapType == craftList[j].trapType2)
+                        foreach (TrapList trap in trapList)
                         {
-                            for (int k = 0; k < trapList.Length; ++k)
+                            if (trap.trapType == trapType)
                             {
-                                if (trapList[k].trapType == trapType)
-                                {
-                                    trapScript.HighLight(trapType, craftList[j].hotspotSprite, 
-                                        craftList[j].prefab, trapList[k].price, craftList[j].isCraftable);
-                                    break;
-                                }
-                            }
-                        }
-                        else if (trapScript.trapType == craftList[j].trapType2 && trapType == craftList[j].trapType)
-                        {
-                            for (int k = 0; k < trapList.Length; ++k)
-                            {
-                                if (trapList[k].trapType == trapType)
-                                {
-                                    trapScript.HighLight(trapType, craftList[j].hotspotSprite, 
-                                        craftList[j].prefab, trapList[k].price, craftList[j].isCraftable);
-                                    break;
-                                }
+                                trapSpotScript.HighLight(trapType, craft.hotspotSprite, craft.prefab, trap.price, false);
+                                break;
                             }
                         }
                     }
@@ -120,9 +102,9 @@ public class TrapManagerScript : MonoBehaviour
 
     public void HideTrapSpots()
     {
-        for (int i = 0; i < trapSpots.Length; ++i)
+        foreach (GameObject trapSpot in trapSpots)
         {
-            trapSpots[i].GetComponent<TrapSpotScript>().HideSpotLight();
+            trapSpot.GetComponent<TrapSpotScript>().HideSpotLight();
         }
     }
 
@@ -138,7 +120,6 @@ public class TrapManagerScript : MonoBehaviour
                 break;
             }
         }
-
         return price;
     }
 }

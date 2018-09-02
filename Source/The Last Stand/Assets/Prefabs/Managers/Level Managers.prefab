@@ -425,7 +425,6 @@ MonoBehaviour:
     trapType2: 2
     hotspotSprite: {fileID: 21300000, guid: 1486566bf46980c48907142fec28cf8a, type: 3}
     prefab: {fileID: 1459463273656260, guid: 71c6dd281b9258147ab798a7f7008f70, type: 2}
-    isCraftable: 0
 --- !u!114 &114204005164977072
 MonoBehaviour:
   m_ObjectHideFlags: 1

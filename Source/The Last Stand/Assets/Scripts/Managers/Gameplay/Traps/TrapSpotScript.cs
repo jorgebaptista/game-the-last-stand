@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TrapSpotScript : MonoBehaviour
 {
@@ -11,14 +9,18 @@ public class TrapSpotScript : MonoBehaviour
     [SerializeField]
     private float hoverTransparency = 0.5f;
 
+    [Space]
+    [SerializeField]
+    private Transform trapSpot;
+
     private int currentPrice;
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool isEmpty, isCraftable;
 
     private bool isCurrentCraftable;
 
-    //[HideInInspector]
+    [HideInInspector]
     public TrapType trapType;
     private TrapType selectedTrap;
 
@@ -71,7 +73,7 @@ public class TrapSpotScript : MonoBehaviour
 
         if (!isEmpty && isCraftable)
         {
-            GetComponentInChildren<TrapScript>(true).gameObject.SetActive(!hovering);
+            trapSpot.GetChild(0).gameObject.SetActive(!hovering);
         }
     }
 
@@ -80,14 +82,14 @@ public class TrapSpotScript : MonoBehaviour
         if (isEmpty) isEmpty = false;
         else
         {
-            Destroy(GetComponentInChildren<TrapScript>(true).gameObject);
+            Destroy(trapSpot.GetChild(0).gameObject);
         }
 
         trapType = selectedTrap;
 
         isCraftable = isCurrentCraftable;
 
-        GameObject trap = Instantiate(currentTrapPrefab, transform);
+        GameObject trap = Instantiate(currentTrapPrefab, trapSpot);
         trap.transform.position = transform.position;
 
         levelManager.UpdateMoney(-currentPrice);

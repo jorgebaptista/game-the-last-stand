@@ -14,7 +14,7 @@ public abstract class EnemyScript : MonoBehaviour
     [SerializeField]
     private float attackCooldown = 2f;
     [SerializeField]
-    private float moveSpeed = 1f;
+    private float baseMoveSpeed = 1f;
 
     [Space]
     [SerializeField]
@@ -45,9 +45,9 @@ public abstract class EnemyScript : MonoBehaviour
     [SerializeField]
     private float burySpeed = 80f;
 
-    protected bool isAlive, isAttacking;
+    protected bool isAlive, isAttacking, isSlowed;
 
-    private float currentLife, currentMoveSpeed;
+    private float currentLife, currentMoveSpeed, moveSpeed;
     protected float currentDamage, currentAttackCooldown;
     protected float baseTimer;
 
@@ -80,6 +80,7 @@ public abstract class EnemyScript : MonoBehaviour
         currentLife = life;
         currentDamage = damage;
         currentAttackCooldown = attackCooldown;
+        moveSpeed = baseMoveSpeed;
         currentMoveSpeed = moveSpeed;
 
         lifeBarCanvas.SetActive(true);
@@ -196,4 +197,18 @@ public abstract class EnemyScript : MonoBehaviour
         gameObject.SetActive(false);
     }
     #endregion
+
+    public void SlowDown(bool slow, float slowPercentage = 0.5f)
+    {
+        if(slow && !isSlowed)
+        {
+            currentMoveSpeed *= slowPercentage;
+            isSlowed = true;
+        }
+        else if (!slow)
+        {
+            currentMoveSpeed = moveSpeed;
+            isSlowed = false;
+        }
+    }
 }
