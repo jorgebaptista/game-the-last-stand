@@ -288,7 +288,7 @@ public class WaveManagerScript : MonoBehaviour
     {
         StopAllCoroutines();
 
-        if (currentWave < waves.Length)
+        if (currentWave < waves.Length - 1)
         {
             AudioManagerScript.instance.PlaySound(waveEndSound, name);
             AudioManagerScript.instance.StopSound(buildModeMusic);

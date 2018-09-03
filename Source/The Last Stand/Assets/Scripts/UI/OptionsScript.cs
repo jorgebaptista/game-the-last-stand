@@ -70,11 +70,11 @@ public class OptionsScript : MonoBehaviour
     {
         if (windowedModeToggle.isOn)
         {
-            Screen.fullScreen = true;
+            Screen.fullScreen = false;
         }
         else
         {
-            Screen.fullScreen = false;
+            Screen.fullScreen = true;
         }
     }
 

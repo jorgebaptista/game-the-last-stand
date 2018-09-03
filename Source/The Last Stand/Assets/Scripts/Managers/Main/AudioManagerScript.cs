@@ -71,7 +71,7 @@ public class AudioManagerScript : MonoBehaviour
 
     private void Awake()
     {
-        instance = instance ?? this;
+        instance = this;
 
         if (instance == this)
         {

@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eacab57b956c8f042a89f6cf07bcb9ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuMusic: Menu_Music
 --- !u!1001 &831749710
 Prefab:
   m_ObjectHideFlags: 0
@@ -441,56 +442,6 @@ Prefab:
     - target: {fileID: 4553794084752614, guid: cdcead927fd832142a9b2e31e84cbbab, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211264741199140, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: sounds.Array.data[4].soundFile
-      value: 
-      objectReference: {fileID: 8300000, guid: e802c7545e06c41fca4d353b8b8421d6, type: 3}
-    - target: {fileID: 114211264741199140, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: sounds.Array.data[4].name
-      value: Draugr_Death
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211264741199140, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: sounds.Array.data[4].volume
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211264741199140, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: sounds.Array.data[4].randomizeVol
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211264741199140, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: sounds.Array.data[4].minVolume
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211264741199140, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: sounds.Array.data[4].minPitch
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114211264741199140, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: sounds.Array.data[4].randomizePitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 82456297140809482, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 82442956094402474, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 82456297140809482, guid: cdcead927fd832142a9b2e31e84cbbab,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdcead927fd832142a9b2e31e84cbbab, type: 2}

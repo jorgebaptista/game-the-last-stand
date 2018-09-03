@@ -54,7 +54,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4446921215998480}
   - component: {fileID: 114211264741199140}
-  - component: {fileID: 114909596415830628}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -572,7 +571,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -667,7 +666,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.8
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -977,15 +976,15 @@ MonoBehaviour:
     pitch: 1
     randomizePitch: 0
     minPitch: 0
-  - name: Ballista_Attack
-    soundFile: {fileID: 8300000, guid: 3914ee05ccf8a4178baeb29c685c0a60, type: 3}
+  - name: Draugr_Death
+    soundFile: {fileID: 8300000, guid: e802c7545e06c41fca4d353b8b8421d6, type: 3}
     type: 3
     volume: 0.7
-    randomizeVol: 0
-    minVolume: 0
+    randomizeVol: 1
+    minVolume: 0.4
     pitch: 1
     randomizePitch: 1
-    minPitch: 0.7
+    minPitch: 0.5
   - name: Ballista_Reload
     soundFile: {fileID: 8300000, guid: 6d6389760e2a745de955866594fdb837, type: 3}
     type: 3
@@ -995,6 +994,15 @@ MonoBehaviour:
     pitch: 1
     randomizePitch: 0
     minPitch: 0
+  - name: Ballista_Attack
+    soundFile: {fileID: 8300000, guid: 3914ee05ccf8a4178baeb29c685c0a60, type: 3}
+    type: 3
+    volume: 0.7
+    randomizeVol: 0
+    minVolume: 0
+    pitch: 1.1
+    randomizePitch: 1
+    minPitch: 0.8
   - name: Draugr_Attack
     soundFile: {fileID: 8300000, guid: 34b03307b14ec40d38d754c1509574d8, type: 3}
     type: 2
@@ -1290,23 +1298,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114909596415830628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1106314121729240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49b2abfd70e28534d8f4da443240d885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicAudioSource: {fileID: 0}
-  announcementAudioSource: {fileID: 0}
-  sFXAudioSource: {fileID: 0}
-  ballistaAudioSource: {fileID: 0}
-  trapsAudioSource: {fileID: 0}
-  sounds: []
 --- !u!222 &222135183099444652
 CanvasRenderer:
   m_ObjectHideFlags: 1
