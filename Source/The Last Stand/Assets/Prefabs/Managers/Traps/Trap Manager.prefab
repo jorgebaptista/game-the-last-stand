@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1816950426265004}
+  m_IsPrefabAsset: 1
+--- !u!1 &1816950426265004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4687572453115108}
+  - component: {fileID: 114317903367396678}
+  m_Layer: 0
+  m_Name: Trap Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &4687572453115108
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816950426265004}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114317903367396678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816950426265004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d39e6574bd01c4895f1039f225dfb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trapList:
+  - trapType: 0
+    hotspotSprite: {fileID: 21300000, guid: 0fa2bf76d5fa61841a1dcb3cce2b79e1, type: 3}
+    hoverSprite: {fileID: 21300000, guid: c786f43bcbd9b8a4e895dc8fee0eaa1f, type: 3}
+    prefab: {fileID: 1304672164185958, guid: 3b7b0e2d6e7a36d49bf1e6dc262e854f, type: 2}
+  - trapType: 1
+    hotspotSprite: {fileID: 21300000, guid: bd6d6b58d9e47684f863ed2c7efe9201, type: 3}
+    hoverSprite: {fileID: 21300000, guid: b6caec7e74966214ab5033f497262675, type: 3}
+    prefab: {fileID: 1551525791584538, guid: a396a4270c658f34881a216471caae97, type: 2}
+  - trapType: 2
+    hotspotSprite: {fileID: 21300000, guid: 499b19dce3d797840a1732e1f39474a7, type: 3}
+    hoverSprite: {fileID: 21300000, guid: e480fdcb5f76e724bb2a1465f9f15f17, type: 3}
+    prefab: {fileID: 1526379344052534, guid: 8b57b118c527b764d8930700db3955e4, type: 2}
+  crafList:
+  - trapType: 1
+    trapType2: 2
+    hoverSprite: {fileID: 21300000, guid: 1486566bf46980c48907142fec28cf8a, type: 3}
+    prefab: {fileID: 1459463273656260, guid: 71c6dd281b9258147ab798a7f7008f70, type: 2}

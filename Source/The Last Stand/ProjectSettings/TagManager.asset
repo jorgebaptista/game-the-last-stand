@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Spawner
+  - Trap
+  - Palisade
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Ground
+  - Player
+  - Player Attack
+  - Enemy
+  - Enemy Attack
+  - Trap
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Background
+    uniqueID: 3178974717
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 31486045
+    locked: 0
+  - name: Enemy
+    uniqueID: 2482658819
+    locked: 0
+  - name: Trap
+    uniqueID: 689141735
+    locked: 0
+  - name: Projectile
+    uniqueID: 4103568085
+    locked: 0
+  - name: Foreground
+    uniqueID: 3942397199
+    locked: 0
+  - name: UI
+    uniqueID: 2839085101
+    locked: 0
