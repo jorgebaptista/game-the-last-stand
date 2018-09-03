@@ -24,6 +24,15 @@ public class WaveManagerScript : MonoBehaviour
     [Tooltip("Insert all enemies that will be spawned on the level.")]
     private Enemy[] enemyList;
 
+    [Header("Sounds")]
+    [Space]
+    [SerializeField]
+    private string buildModeMusic = "Build_Music";
+    [SerializeField]
+    private string waveStartSound = "Wave_Start";
+    [SerializeField]
+    private string waveEndSound = "Wave_End";
+
     private List<Enemy> sortedEnemies = new List<Enemy>();
 
     private float spawnTimer;
@@ -74,6 +83,11 @@ public class WaveManagerScript : MonoBehaviour
         SetupWave();
     }
 
+    private void Start()
+    {
+        AudioManagerScript.instance.PlaySound(buildModeMusic, name);
+    }
+
     private void SetupWave()
     {
         uIManager.UpdateWaveText(currentWave + 1);
@@ -86,6 +100,8 @@ public class WaveManagerScript : MonoBehaviour
     #region Enemy Setup
     private void SetUpEnemies()
     {
+        totalEnemies = 0;
+
         for (int i = 0; i < enemyList.Length; ++i)
         {
             enemyList[i].isActiveThisWave = false;
@@ -173,6 +189,10 @@ public class WaveManagerScript : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(RunWave());
+
+        AudioManagerScript.instance.PlaySound(waveStartSound, name);
+        AudioManagerScript.instance.StopSound(waves[currentWave].waveMusic);
+        AudioManagerScript.instance.PlaySound(waves[currentWave].waveMusic, name);
     }
 
     private IEnumerator RunWave()
@@ -221,6 +241,8 @@ public class WaveManagerScript : MonoBehaviour
                     sortedEnemies[0] = pickedEnemy;
 
                     enemyPicked = true;
+
+                    break;
                 }
             }
             --incomingEnemies;
@@ -268,6 +290,10 @@ public class WaveManagerScript : MonoBehaviour
 
         if (currentWave < waves.Length)
         {
+            AudioManagerScript.instance.PlaySound(waveEndSound, name);
+            AudioManagerScript.instance.StopSound(buildModeMusic);
+            AudioManagerScript.instance.PlaySound(buildModeMusic, name);
+
             ++currentWave;
             SetupWave();
             levelManager.ToggleBuildMode(true);

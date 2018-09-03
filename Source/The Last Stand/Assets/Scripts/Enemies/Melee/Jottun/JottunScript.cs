@@ -10,6 +10,7 @@ public class JottunScript : EnemyMeleeScript
         if (damageable != null)
         {
             damageable.TakeDamage(currentDamage / 2);
+            AudioManagerScript.instance.PlaySound(attackSound, name);
         }
         else Debug.LogError("Ballista Script not assigned on OnTriggerEnter2D");
     }

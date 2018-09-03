@@ -194,6 +194,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   damage: 10
+  trapSound:
+  - Trap_Spikes_01
+  - Trap_Spikes_02
+  - Trap_Spikes_03
 --- !u!212 &212325200061865678
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -8,7 +8,7 @@ public abstract class EnemyScript : MonoBehaviour
     [Header("Settings")]
     [Space]
     [SerializeField]
-    private float life = 80f;
+    private float baseLife = 80f;
     [SerializeField]
     private float damage = 20f;
     [SerializeField]
@@ -45,9 +45,16 @@ public abstract class EnemyScript : MonoBehaviour
     [SerializeField]
     private float burySpeed = 80f;
 
+    [Header("Sound Settings")]
+    [Space]
+    [SerializeField]
+    protected string attackSound;
+    [SerializeField]
+    protected string deathSound;
+
     protected bool isAlive, isAttacking, isSlowed;
 
-    private float currentLife, currentMoveSpeed, moveSpeed;
+    private float currentLife, life, currentMoveSpeed, moveSpeed;
     protected float currentDamage, currentAttackCooldown;
     protected float baseTimer;
 
@@ -77,11 +84,10 @@ public abstract class EnemyScript : MonoBehaviour
         isAlive = true;
         isAttacking = false;
 
-        currentLife = life;
+        life = baseLife;
         currentDamage = damage;
         currentAttackCooldown = attackCooldown;
         moveSpeed = baseMoveSpeed;
-        currentMoveSpeed = moveSpeed;
 
         lifeBarCanvas.SetActive(true);
         lifeBarImage.fillAmount = 1f;
@@ -95,10 +101,12 @@ public abstract class EnemyScript : MonoBehaviour
     {
         ResetStats();
 
-        currentLife *= lifeMultiplier;
+        life *= lifeMultiplier;
+        currentLife = life;
         currentDamage *= damageMultiplier;
         currentAttackCooldown *= attackSpeedMultiplier;
-        currentMoveSpeed *= speedMultiplier;
+        moveSpeed *= speedMultiplier;
+        currentMoveSpeed = moveSpeed;
     }
     #endregion
 
@@ -135,7 +143,7 @@ public abstract class EnemyScript : MonoBehaviour
 
             UpdateLifeBar();
 
-            if (currentLife == 0) Die();
+            if (currentLife <= 0) Die();
         }
     }
 
@@ -162,6 +170,8 @@ public abstract class EnemyScript : MonoBehaviour
     {
         isAlive = false;
         myRigidBody2D.velocity = Vector2.zero;
+
+        AudioManagerScript.instance.PlaySound(deathSound, name);
 
         myAnimator.SetBool("Is Alive", false);
         myAnimator.SetTrigger("Die");

@@ -21,7 +21,7 @@ public class SceneManagerScript : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null) instance = this;
+        instance = instance ?? this;
     }
 
     #region LoadScene
@@ -40,6 +40,7 @@ public class SceneManagerScript : MonoBehaviour
 
     private IEnumerator LoadAsynchronously(bool isImmediate = true)
     {
+        AudioManagerScript.instance.StopAllSounds();
         currentAsyncScene.allowSceneActivation = false;
 
         while (currentAsyncScene.isDone)
@@ -71,11 +72,13 @@ public class SceneManagerScript : MonoBehaviour
 
     public void RestartScene()
     {
+        AudioManagerScript.instance.StopAllSounds();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()
     {
+        AudioManagerScript.instance.StopAllSounds();
         Application.Quit();
 
         #if UNITY_EDITOR

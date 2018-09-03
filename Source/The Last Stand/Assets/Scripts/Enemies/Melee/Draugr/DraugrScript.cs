@@ -49,6 +49,7 @@ public class DraugrScript : EnemyMeleeScript
         if (damageable != null)
         {
             damageable.TakeDamage(currentDamage);
+            AudioManagerScript.instance.PlaySound(attackSound, name);
         }
         else Debug.LogError("Ballista Script not assigned on OnTriggerEnter2D");
     }

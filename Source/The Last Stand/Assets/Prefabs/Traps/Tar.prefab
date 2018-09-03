@@ -219,6 +219,10 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+  trapSound:
+  - Tar_Trap_01
+  - Tar_Trap_02
+  - Tar_Trap_03
   slowPercentage: 0.5
 --- !u!212 &212630909301781678
 SpriteRenderer:

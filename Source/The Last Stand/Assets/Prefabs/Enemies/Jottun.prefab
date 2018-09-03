@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760c8c64098d52745bd06102e2e821d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 200
+  baseLife: 80
   damage: 30
   attackCooldown: 3.5
   baseMoveSpeed: 1
@@ -299,6 +299,8 @@ MonoBehaviour:
   lifeBarCanvas: {fileID: 1500344574544666}
   fadeSpeed: 1
   burySpeed: 100
+  attackSound: Jottun_Attack
+  deathSound: Jottun_Death
   attackTrigger: {fileID: 61615300672964208}
 --- !u!114 &114349076414592366
 MonoBehaviour:

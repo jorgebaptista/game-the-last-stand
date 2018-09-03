@@ -13,6 +13,10 @@ public class TrapScript : MonoBehaviour
     [SerializeField]
     protected LayerMask enemyLayerMask;
 
+    [Space]
+    [SerializeField]
+    private string[] trapSound;
+
     private Animator myAnimator;
 
     private void Awake()
@@ -23,5 +27,10 @@ public class TrapScript : MonoBehaviour
     private void FixedUpdate()
     {
         myAnimator.SetBool("Is Active", Physics2D.OverlapArea(checkAreaA.position, checkAreaB.position, enemyLayerMask));
+    }
+
+    private void PlaySound()
+    {
+        AudioManagerScript.instance.PlaySound(trapSound[Random.Range(0, trapSound.Length)], name);
     }
 }

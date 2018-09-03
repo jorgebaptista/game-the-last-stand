@@ -6,6 +6,10 @@ public class WaveScript : MonoBehaviour
     [Space]
     [SerializeField]
     public float spawnTimer = 3f;
+
+    [Space]
+    public string waveMusic;
+
     [Space]
     [SerializeField]
     public EnemyList[] enemyList;
@@ -47,8 +51,8 @@ public class WaveScript : MonoBehaviour
             enemyProbabilities += enemy.probability;
         }
 
-        if (enemyProbabilities != 100) Debug.LogError("Total enemy probability of " + gameObject.name + " must equal to 100(%)." +
-            " Please reconfigure each enemy probability.");
+        //if (enemyProbabilities != 100) Debug.LogError("Total enemy probability of " + gameObject.name + " must equal to 100(%)." +
+        //    " Please reconfigure each enemy probability.");
 
         for (int i = 0; i < enemyList.Length; ++i)
         {

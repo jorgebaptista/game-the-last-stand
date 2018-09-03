@@ -350,8 +350,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cabc90bcabfb84bb56aab9950e35a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildTimer: 30
-  startingMoney: 5000
+  buildTimer: 15
+  startingMoney: 0
   currentMoney: 0
   isPaused: 0
   buildMode: 0

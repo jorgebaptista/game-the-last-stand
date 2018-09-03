@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea834659de74c14eabba06cfc913b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
+  baseLife: 80
   damage: 20
   attackCooldown: 2.5
   baseMoveSpeed: 2.5
@@ -321,6 +321,8 @@ MonoBehaviour:
   lifeBarCanvas: {fileID: 1171309008143646}
   fadeSpeed: 2
   burySpeed: 80
+  attackSound: DarkElf_Attack
+  deathSound: DarkElf_Death
   shootForce: 500
   shootPoint: {fileID: 4274288902205970}
   arrowPrefab: {fileID: 1419362285219970, guid: 6b6f4b57859b02c4888fc78189d4656c,

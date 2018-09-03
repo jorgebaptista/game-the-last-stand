@@ -37,6 +37,8 @@ public class DarkElfScript : EnemyScript
         arrow.transform.rotation = shootPoint.rotation;
         arrow.SetActive(true);
         arrow.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * shootForce);
+
+        AudioManagerScript.instance.PlaySound(attackSound, name);
     }
 
     public void DisableAttack()

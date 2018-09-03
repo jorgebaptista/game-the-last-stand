@@ -13,6 +13,15 @@ public class LevelManagerScript : MonoBehaviour
     [SerializeField]
     private int startingMoney = 0;
 
+    [Space]
+    [SerializeField]
+    private string levelName;
+    [Space]
+    [SerializeField]
+    private GameObject winScreen;
+    [SerializeField]
+    private GameObject loseScreen;
+
     [HideInInspector]
     public int currentMoney = 0;
 
@@ -75,12 +84,19 @@ public class LevelManagerScript : MonoBehaviour
 
     public void GameOver()
     {
-        Debug.LogWarning("Unfinished Script");
-        //*******************
+        TogglePause(true);
+        loseScreen.SetActive(true);
+
+        AudioManagerScript.instance.StopAllSounds();
     }
     public void GameWin()
     {
-        Debug.LogWarning("Unfinished Script");
-        //*******************
+        PlayerPrefs.SetString(levelName, "done");
+        PlayerPrefs.Save();
+
+        TogglePause(true);
+        winScreen.SetActive(true);
+
+        AudioManagerScript.instance.StopAllSounds();
     }
 }

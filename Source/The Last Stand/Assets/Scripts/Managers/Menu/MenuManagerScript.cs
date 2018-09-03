@@ -15,6 +15,9 @@ public class MenuManagerScript : MonoBehaviour
     [SerializeField]
     private GameObject blurImage;
 
+    [Space]
+    private string menuMusic = "Menu_Music";
+
     [Header("Level Select Settings")]
     [Space]
     [SerializeField]
@@ -62,6 +65,11 @@ public class MenuManagerScript : MonoBehaviour
             if (IsMenuActive(linkedExtrasMenus)) CollapseMenus(extrasMenu, linkedExtrasMenus, mainMenu);
             else CollapseMenus(mainMenu, linkedMainMenus);
         }
+    }
+
+    private void Start()
+    {
+        if (!AudioManagerScript.instance.CheckMusicPlaying()) AudioManagerScript.instance.PlaySound(menuMusic, name);
     }
 
     public void OpenMenu(bool intro = false)

@@ -305,7 +305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1443797328958298
 GameObject:
   m_ObjectHideFlags: 1
@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 222141770751150792}
   - component: {fileID: 114169697816447980}
   - component: {fileID: 114577896159228048}
+  - component: {fileID: 114381325758145874}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -546,6 +547,7 @@ GameObject:
   - component: {fileID: 222340927680838106}
   - component: {fileID: 114040049075404412}
   - component: {fileID: 114012018624614526}
+  - component: {fileID: 114077093806347554}
   m_Layer: 5
   m_Name: Back
   m_TagString: Untagged
@@ -781,6 +783,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Effects
+--- !u!114 &114077093806347554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1898104819388528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb14a511a253b46b3d82beb1cad782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: Button_Click
 --- !u!114 &114118228052573174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1008,9 +1022,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114077093806347554}
+        m_MethodName: TaskOnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Toggle+ToggleEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_IsOn: 1
+--- !u!114 &114381325758145874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670433374704222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76fb14a511a253b46b3d82beb1cad782, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickSound: Button_Click
 --- !u!114 &114386639158594142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1083,7 +1120,18 @@ MonoBehaviour:
   m_Value: 0.71
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114576424132818544}
+        m_MethodName: UpdateSfxVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114423439588045642
@@ -1155,6 +1203,8 @@ MonoBehaviour:
   soundSliders:
   - {fileID: 114749619792297980}
   - {fileID: 114405110313633952}
+  musicSlider: {fileID: 114749619792297980}
+  sFXSlider: {fileID: 114405110313633952}
   windowedModeToggle: {fileID: 114024339665197096}
   graphicsQualityText: {fileID: 114793640606391354}
 --- !u!114 &114577896159228048
@@ -1374,7 +1424,18 @@ MonoBehaviour:
   m_Value: 0.58
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114576424132818544}
+        m_MethodName: UpdateMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114775954766271500

@@ -59,6 +59,13 @@ public class BallistaScript : MonoBehaviour, IDamageable
     [SerializeField]
     private GameObject reloadBarCanvas;
 
+    [Header("Sounds")]
+    [Space]
+    [SerializeField]
+    private string attackSound = "Ballista_Attack";
+    [SerializeField]
+    private string reloadSound = "Ballista_Reload";
+
     [Header("References")]
     [Space]
     [SerializeField]
@@ -160,6 +167,8 @@ public class BallistaScript : MonoBehaviour, IDamageable
         bolt.SetActive(true);
         bolt.GetComponent<Rigidbody2D>().AddForce(shootPoint.right * currentShootForce);
 
+        AudioManagerScript.instance.PlaySound(attackSound, name);
+
         --currentAmmo;
 
         if (currentAmmo == 0) StartCoroutine(Reload());
@@ -186,6 +195,8 @@ public class BallistaScript : MonoBehaviour, IDamageable
             reloadBarImage.fillAmount = Mathf.Clamp01((timer - Time.time) / timeToReload);
             yield return null;
         }
+
+        AudioManagerScript.instance.PlaySound(reloadSound, name);
 
         reloadBarCanvas.SetActive(false);
         currentAmmo = ammo;

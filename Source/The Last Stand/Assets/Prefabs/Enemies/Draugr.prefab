@@ -383,7 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d54719a1c7c99444a3555d519d4f870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 50
+  baseLife: 80
   damage: 10
   attackCooldown: 0
   baseMoveSpeed: 5
@@ -398,6 +398,8 @@ MonoBehaviour:
   lifeBarCanvas: {fileID: 1500344574544666}
   fadeSpeed: 2
   burySpeed: 80
+  attackSound: Draugr_Attack
+  deathSound: Draugr_Death
   attackTrigger: {fileID: 61065057091229240}
   pushBackForce: 200
   checkRadius: 0.1

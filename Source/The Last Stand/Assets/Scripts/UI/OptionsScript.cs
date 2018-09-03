@@ -13,6 +13,12 @@ public class OptionsScript : MonoBehaviour
     [SerializeField]
     private Slider[] soundSliders;
 
+    [Space]
+    [SerializeField]
+    private Slider musicSlider;
+    [SerializeField]
+    private Slider sFXSlider;
+
     [Header("Video Settings")]
     [Space]
     [SerializeField]
@@ -23,6 +29,7 @@ public class OptionsScript : MonoBehaviour
     private Text graphicsQualityText;
 
     private int currentQualityIndex;
+
     private void Awake()
     {
         currentQualityIndex = QualitySettings.GetQualityLevel();
@@ -31,7 +38,12 @@ public class OptionsScript : MonoBehaviour
     {
         UpdateSoundToggle();
         UpdateQualitySettingsButtonText();
+
+        //soundEnabledToggle.isOn = AudioManagerScript.instance.GetAudioState();
+        musicSlider.value = AudioManagerScript.instance.GetMusicVolume();
+        sFXSlider.value = AudioManagerScript.instance.GetSFxVoluma();
     }
+
     public void UpdateSoundToggle()
     {
         if (!soundEnabledToggle.isOn)
@@ -39,41 +51,30 @@ public class OptionsScript : MonoBehaviour
             for (int sliderIndex = 0; sliderIndex < soundSliders.Length; ++sliderIndex)
             {
                 soundSliders[sliderIndex].interactable = false;
-                Image[] sliderImages = soundSliders[sliderIndex].GetComponentsInChildren<Image>();
-
-                for (int imageIndex = 0; imageIndex < sliderImages.Length; ++imageIndex)
-                {
-                    sliderImages[imageIndex].color = Color.gray;
-                }
             }
+
+            AudioManagerScript.instance.DisableSound(true);
         }
         else
         {
             for (int sliderIndex = 0; sliderIndex < soundSliders.Length; ++sliderIndex)
             {
                 soundSliders[sliderIndex].interactable = true;
-                Image[] sliderImages = soundSliders[sliderIndex].GetComponentsInChildren<Image>();
-
-                for (int imageIndex = 0; imageIndex < sliderImages.Length; ++imageIndex)
-                {
-                    sliderImages[imageIndex].color = Color.white;
-                }
             }
+
+            AudioManagerScript.instance.DisableSound(false);
         }
     }
 
-    //**********************************************************
     public void ToggleWindowedMode()
     {
-        Debug.Log(windowedModeToggle.isOn);
-        //Screen.fullScreen = !windowedModeToggle.isOn;
         if (windowedModeToggle.isOn)
         {
-            Screen.fullScreenMode = FullScreenMode.MaximizedWindow;
+            Screen.fullScreen = true;
         }
         else
         {
-            Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+            Screen.fullScreen = false;
         }
     }
 
@@ -95,5 +96,15 @@ public class OptionsScript : MonoBehaviour
     private void UpdateQualitySettingsButtonText()
     {
         graphicsQualityText.text = QualitySettings.names[currentQualityIndex].ToString();
+    }
+
+    public void UpdateSfxVolume()
+    {
+        AudioManagerScript.instance.UpdateSfxVolume(sFXSlider.value);
+    }
+
+    public void UpdateMusicVolume()
+    {
+        AudioManagerScript.instance.UpdateMusicVolume(musicSlider.value);
     }
 }

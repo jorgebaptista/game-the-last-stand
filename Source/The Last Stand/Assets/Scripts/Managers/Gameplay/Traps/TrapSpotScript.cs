@@ -13,6 +13,10 @@ public class TrapSpotScript : MonoBehaviour
     [SerializeField]
     private Transform trapSpot;
 
+    [Space]
+    [SerializeField]
+    private string trapPlaceSound = "Trap_Place";
+
     private int currentPrice;
 
     [HideInInspector]
@@ -93,6 +97,8 @@ public class TrapSpotScript : MonoBehaviour
         trap.transform.position = transform.position;
 
         levelManager.UpdateMoney(-currentPrice);
+
+        AudioManagerScript.instance.PlaySound(trapPlaceSound, name);
 
         uIManager.CollapseTrapMenu();
     }
