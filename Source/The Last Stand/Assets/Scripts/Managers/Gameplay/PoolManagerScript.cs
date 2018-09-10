@@ -12,7 +12,7 @@ public class PoolManagerScript : MonoBehaviour
         public bool sortLayerOrder;
     }
 
-    public int PreCache(GameObject prefab, int initialAmmount = 10, bool sortLayerOrder = true)
+    public int PreCache(GameObject prefab, int initialAmmount = 5, bool sortLayerOrder = true)
     {
         if (prefab == null) Debug.LogError("Pool Manager Precache Method called without prefab argument.");
 

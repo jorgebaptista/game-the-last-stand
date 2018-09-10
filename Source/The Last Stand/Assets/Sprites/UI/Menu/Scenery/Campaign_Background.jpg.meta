@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 82a231b77ce23894885b5ea00a39e9e5
+guid: eccf9b5e9f53d4a47bbb3fa3276feba3
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
@@ -84,7 +84,7 @@ TextureImporter:
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 12
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -97,7 +97,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 71d26e489a1bc5941908ab320ceb93e7
+    spriteID: 04b71a2329e2c75459f575f2c5dfb6c4
     vertices: []
     indices: 
     edges: []

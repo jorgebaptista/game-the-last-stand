@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = true;
+
         if (instance == null) instance = this;
         else if (instance != this) Destroy(gameObject);
 

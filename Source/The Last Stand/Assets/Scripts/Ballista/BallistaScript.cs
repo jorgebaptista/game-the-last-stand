@@ -104,7 +104,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
 
         currentLife = life;
         currentAmmo = ammo;
-        boltPoolID = poolManager.PreCache(boltPrefab);
+        boltPoolID = poolManager.PreCache(boltPrefab, 2);
 
         canShoot = true;
         
