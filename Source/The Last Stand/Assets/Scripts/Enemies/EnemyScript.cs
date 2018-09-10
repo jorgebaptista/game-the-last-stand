@@ -168,19 +168,22 @@ public abstract class EnemyScript : MonoBehaviour
 
     protected virtual void Die()
     {
-        isAlive = false;
-        myRigidBody2D.velocity = Vector2.zero;
+        if (isAlive)
+        {
+            isAlive = false;
+            myRigidBody2D.velocity = Vector2.zero;
 
-        AudioManagerScript.instance.PlaySound(deathSound, name);
+            AudioManagerScript.instance.PlaySound(deathSound, name);
 
-        myAnimator.SetBool("Is Alive", false);
-        myAnimator.SetTrigger("Die");
+            myAnimator.SetBool("Is Alive", false);
+            myAnimator.SetTrigger("Die");
 
-        myCollider2D.enabled = false;
-        myRigidBody2D.isKinematic = true;
+            myCollider2D.enabled = false;
+            myRigidBody2D.isKinematic = true;
 
-        LevelManager.UpdateMoney(money);
-        waveManager.UpdateEnemiesAlive();
+            LevelManager.UpdateMoney(money);
+            waveManager.UpdateEnemiesAlive();
+        }
     }
 
     public void StartFade()

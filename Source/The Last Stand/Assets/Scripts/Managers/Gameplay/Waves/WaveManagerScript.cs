@@ -16,7 +16,7 @@ public class WaveManagerScript : MonoBehaviour
     [Header("Wave Management")]
     [Space]
     [SerializeField]
-    private float endWaveTimer = 1f;
+    private float endWaveTimer = 1.5f;
 
     [Header("Enemies")]
     [Space]
@@ -255,7 +255,8 @@ public class WaveManagerScript : MonoBehaviour
 
         yield return new WaitUntil(() => enemiesAlive == 0);
 
-        yield return new WaitForSeconds(endWaveTimer);
+        if (currentWave < waves.Length - 1) yield return new WaitForSeconds(endWaveTimer);
+        else yield return new WaitForSeconds(endWaveTimer + 2f);
 
         EndWave();
         yield return null;
