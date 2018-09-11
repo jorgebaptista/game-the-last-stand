@@ -19,11 +19,6 @@ public class OptionsScript : MonoBehaviour
     [SerializeField]
     private Slider sFXSlider;
 
-    [Header("Video Settings")]
-    [Space]
-    [SerializeField]
-    private Toggle windowedModeToggle;
-
     [Space]
     [SerializeField]
     private Text graphicsQualityText;
@@ -63,18 +58,6 @@ public class OptionsScript : MonoBehaviour
             }
 
             AudioManagerScript.instance.DisableSound(false);
-        }
-    }
-
-    public void ToggleWindowedMode()
-    {
-        if (windowedModeToggle.isOn)
-        {
-            Screen.fullScreen = false;
-        }
-        else
-        {
-            Screen.fullScreen = true;
         }
     }
 
