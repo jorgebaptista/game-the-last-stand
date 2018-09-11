@@ -13,13 +13,17 @@
 
 ## Download
 
-- [Windows]()
+- [Windows](https://github.com/Belz/game-the-last-stand/releases/download/v1.0.0-beta/TheLastStand_Windows.zip)
 
-- [Linux]()
+- [Linux](https://github.com/Belz/game-the-last-stand/releases/download/v1.0.0-beta/TheLastStand_Linux.zip)
 
-- [Mac]()
+- [Mac](https://github.com/Belz/game-the-last-stand/releases/download/v1.0.0-beta/TheLastStand_Mac.zip)
 
-**Check out our game on Itch.io [here!](https://brainmotiongames.itch.io/the-last-stand)**
+- [Source](https://github.com/Belz/game-the-last-stand/archive/v1.0.0-beta.zip)
+
+**Play the web versin on Itch.io [here!](https://brainmotiongames.itch.io/the-last-stand)**
+
+*(Further development for this game is currently on hold with no plans for the future)*
 
 
 <br>
