@@ -21,7 +21,7 @@
 
 - [Source](https://github.com/Belz/game-the-last-stand/archive/v1.0.0-beta.zip)
 
-**Play the web versin on Itch.io [here!](https://brainmotiongames.itch.io/the-last-stand)**
+**Play the web version on Itch.io [here!](https://brainmotiongames.itch.io/the-last-stand)**
 
 *(Further development for this game is currently on hold with no plans for the future)*
 
