@@ -1,7 +1,6 @@
 # Credits
 
-Here is the list of all the used assets not produced by us, alongside their authors name.
-
+Here is the list of all the used assets not produced by us, alongside their authors name and individuals/groups who helped us and supported us in the production of our game.
 
 ### Music: 
 
@@ -34,3 +33,13 @@ Here is the list of all the used assets not produced by us, alongside their auth
 ### Fonts:
 - Titles — "[Viga](https://fonts.google.com/specimen/Viga)" by Fontstage.
 - Text & Input — "[Kreon](https://fonts.google.com/specimen/Kreon)" by Julia Petretta.
+
+<br>
+
+## Special thanks to
+
+- [Giorgi Beriashvili](https://github.com/0rganic) for helping us test and balance the waves of each avaiable level.
+
+- Rui Silva for helping out with a bug in the ballista reload. 
+
+- Everyone who supported us along the way, such as our families and friends.
