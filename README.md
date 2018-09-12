@@ -46,7 +46,7 @@
 
 - Miguel Salgueiro ([@willow-games]()) — Project Manager
 
-Check our credits file for more information on external assets used in this game - [here](https://github.com/Belz/game-the-last-stand/blob/master/CREDITS.md).
+**Check our credits file for more information on external assets used in this game - [here](https://github.com/Belz/game-the-last-stand/blob/master/CREDITS.md).**
 
 <br>
 
@@ -54,6 +54,6 @@ Check our credits file for more information on external assets used in this game
 
 - Code licensed under the [GNU General Public License v3.0 (GNU GPLv3)](https://choosealicense.com/licenses/gpl-3.0/). Check our license file for more information [here](https://github.com/Belz/game-the-last-stand/blob/master/LICENSE).
 
-- Assets not specified in credits licensed under the [Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). For more information on this license click [here](https://creativecommons.org/licenses/by-nc/4.0/legalcode).
+- Assets not specified in our [credits file](https://github.com/Belz/game-the-last-stand/blob/master/CREDITS.md) licensed under the [Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/). For more information on this license click [here](https://creativecommons.org/licenses/by-nc/4.0/legalcode).
 
 <br><p align="center"> Copyright © Brain Motion Games Studio. All rights reserved. </p>
