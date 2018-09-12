@@ -39,6 +39,8 @@ public class WaveManagerScript : MonoBehaviour
 
     private int currentWave, totalEnemies, enemiesAlive;
 
+    public bool waveActive = false;
+
     private WaveScript[] waves;
     private GameObject[] spawners;
 
@@ -200,6 +202,9 @@ public class WaveManagerScript : MonoBehaviour
         int incomingEnemies = totalEnemies;
         enemiesAlive = 0;
 
+        yield return new WaitForSeconds(.5f);
+        waveActive = true;
+
         while (incomingEnemies > 0)
         {
             Enemy pickedEnemy = new Enemy();
@@ -254,6 +259,8 @@ public class WaveManagerScript : MonoBehaviour
         }
 
         yield return new WaitUntil(() => enemiesAlive == 0);
+
+        waveActive = false;
 
         if (currentWave < waves.Length - 1) yield return new WaitForSeconds(endWaveTimer);
         else yield return new WaitForSeconds(endWaveTimer + 2f);

@@ -11903,6 +11903,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1711044084}
   - component: {fileID: 1711044085}
+  - component: {fileID: 1711044086}
   m_Layer: 5
   m_Name: HUD Canvas
   m_TagString: Untagged
@@ -11954,6 +11955,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &1711044086
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1711044083}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!114 &1715097447 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114004477858588386, guid: fc630c22f6598ea4a8a9ba68ae6224d5,
@@ -13966,7 +13978,6 @@ MonoBehaviour:
   - {fileID: 1901315643}
   musicSlider: {fileID: 1385646748}
   sFXSlider: {fileID: 1901315643}
-  windowedModeToggle: {fileID: 0}
   graphicsQualityText: {fileID: 1163324210}
 --- !u!224 &2025011285
 RectTransform:

@@ -31,12 +31,14 @@ public class TrapButtonScript : MonoBehaviour
     private LevelManagerScript levelManager;
     private UIManagerScript uIManager;
     private TrapManagerScript trapManager;
+    private BallistaScript ballistaScript;
 
     private void Awake()
     {
         trapManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<TrapManagerScript>();
         levelManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
         uIManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<UIManagerScript>();
+        ballistaScript = GameObject.FindGameObjectWithTag("Player").GetComponent<BallistaScript>();
 
         price = trapManager.GetPrice(trapType);
 
@@ -53,7 +55,7 @@ public class TrapButtonScript : MonoBehaviour
         UpdateButton();
     }
 
-    private void UpdateButton()
+    public void UpdateButton()
     {
         myImage.sprite = levelManager.currentMoney >= price ? activeSprite : inactiveSprite;
         priceText.color = levelManager.currentMoney >= price ? Color.white : Color.red;
@@ -66,6 +68,8 @@ public class TrapButtonScript : MonoBehaviour
             highlightPriceText.text = price.ToString();
             uIManager.CollapseTrapMenu(false);
             trapManager.HighlightSpots(trapType);
+
+            ballistaScript.ShowRepairCanvas(false);
         }
     }
 }

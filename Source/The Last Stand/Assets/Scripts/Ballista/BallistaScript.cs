@@ -79,7 +79,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
 
     private float pivotOffset = 0.31f;
 
-    private bool isAlive, canShoot;
+    private bool isAlive, canShoot, isReloading, isCharging;
     private bool isFacingRight = true;
 
     private SpriteRenderer mySpriteRenderer;
@@ -88,6 +88,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
     private LevelManagerScript levelManager;
     private UIManagerScript uIManager;
     private PoolManagerScript poolManager;
+    private WaveManagerScript waveManager;
     #endregion
 
     private void Awake()
@@ -96,6 +97,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
         levelManager = gameController.GetComponentInChildren<LevelManagerScript>();
         uIManager = gameController.GetComponentInChildren<UIManagerScript>();
         poolManager = gameController.GetComponentInChildren<PoolManagerScript>();
+        waveManager = gameController.GetComponentInChildren<WaveManagerScript>();
 
         mySpriteRenderer = ballistaHead.GetComponent<SpriteRenderer>();
         myAnimator = ballistaHead.GetComponent<Animator>();
@@ -113,14 +115,22 @@ public class BallistaScript : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (isAlive && !levelManager.buildMode && !levelManager.isPaused)
+        if (isAlive && !levelManager.buildMode && !levelManager.isPaused && waveManager.waveActive)
         {
-            if (canShoot)
+            if (canShoot && !isReloading)
             {
-                if (Input.GetButton("Shoot")) myAnimator.SetBool("Is Charging", true);
-                if (Input.GetButtonUp("Shoot")) myAnimator.SetBool("Is Charging", false);
+                if (Input.GetButton("Shoot"))
+                {
+                    myAnimator.SetBool("Is Charging", true);
+                    isCharging = true;
+                }
+                if (Input.GetButtonUp("Shoot"))
+                {
+                    myAnimator.SetBool("Is Charging", false);
+                    isCharging = false;
+                }
 
-                if (Input.GetButtonDown("Reload") && currentAmmo < ammo) StartCoroutine(Reload());
+                if (Input.GetButtonDown("Reload") && currentAmmo < ammo && !isCharging) StartCoroutine(Reload());
             }
 
             #region Rotation
@@ -159,6 +169,8 @@ public class BallistaScript : MonoBehaviour, IDamageable
 
     public void Shoot()
     {
+        canShoot = false;
+
         GameObject bolt = poolManager.GetCachedPrefab(boltPoolID);
 
         bolt.GetComponent<ProjectileScript>().ResetStats(currentDamage);
@@ -185,7 +197,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
 
     private IEnumerator Reload()
     {
-        canShoot = false;
+        isReloading = true;
         float timeToReload = reloadTimer - (reloadTimer * ((float)currentAmmo / ammo));
         float timer = Time.time + timeToReload;
         reloadBarCanvas.SetActive(true);
@@ -201,6 +213,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
         reloadBarCanvas.SetActive(false);
         currentAmmo = ammo;
         UpdateUI();
+        isReloading = false;
         canShoot = true;
         myAnimator.SetTrigger("Ready");
     }
@@ -253,6 +266,7 @@ public class BallistaScript : MonoBehaviour, IDamageable
             if (currentLife > life) currentLife = life;
             UpdateUI();
             ShowRepairCanvas();
+            uIManager.UpdateTrapMenu();
         }
     }
     #endregion

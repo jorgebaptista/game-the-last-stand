@@ -15,6 +15,11 @@ public class SceneManagerScript : MonoBehaviour
     [SerializeField]
     private Image loadBar;
 
+    [Header("Credits")]
+    [Space]
+    [SerializeField]
+    private GameObject credits;
+
     public static SceneManagerScript instance;
 
     private AsyncOperation currentAsyncScene;
@@ -84,5 +89,12 @@ public class SceneManagerScript : MonoBehaviour
         #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
         #endif
+    }
+
+    public void LoadMenuAndCredits()
+    {
+        credits.SetActive(true);
+        AudioManagerScript.instance.StopAllSounds();
+        SceneManager.LoadScene("Menu");
     }
 }

@@ -79,6 +79,8 @@ public class LevelManagerScript : MonoBehaviour
     public void UpdateMoney(int money)
     {
         currentMoney += money;
+
+        if (currentMoney < 0) currentMoney = 0;
         uIManager.UpdateMoneyText(currentMoney, money, money > 0);
     }
 

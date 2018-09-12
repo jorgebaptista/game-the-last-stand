@@ -65,6 +65,7 @@ public class UIManagerScript : MonoBehaviour
     private LevelManagerScript levelManager;
     private TrapManagerScript trapManager;
     private BallistaScript ballistaScript;
+    private TrapButtonScript[] trapButtonScripts;
     #endregion
 
     private void Awake()
@@ -72,6 +73,7 @@ public class UIManagerScript : MonoBehaviour
         levelManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<LevelManagerScript>();
         trapManager = GameObject.FindGameObjectWithTag("GameController").GetComponentInChildren<TrapManagerScript>();
         ballistaScript = GameObject.FindGameObjectWithTag("Player").GetComponent<BallistaScript>();
+        trapButtonScripts = FindObjectsOfType<TrapButtonScript>();
     }
 
     private void Update()
@@ -153,6 +155,15 @@ public class UIManagerScript : MonoBehaviour
         {
             foreach (GameObject tooltip in trapTooltips) tooltip.SetActive(false);
             trapManager.HideTrapSpots();
+            ballistaScript.ShowRepairCanvas();
+        }
+    }
+
+    public void UpdateTrapMenu()
+    {
+        foreach (TrapButtonScript trapButtonScript in trapButtonScripts)
+        {
+            trapButtonScript.UpdateButton();
         }
     }
     #endregion
@@ -188,6 +199,11 @@ public class UIManagerScript : MonoBehaviour
     public void RestartScene()
     {
         SceneManagerScript.instance.RestartScene();
+    }
+
+    public void WinGame()
+    {
+        SceneManagerScript.instance.LoadMenuAndCredits();
     }
     #endregion
 }
