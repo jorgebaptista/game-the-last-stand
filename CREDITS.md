@@ -25,7 +25,7 @@ Here is the list of all the used assets not produced by us, alongside their auth
 - Elf attack — "[Bow & Arrow Shot](https://opengameart.org/content/bow-arrow-shot)" by [dorkster](https://opengameart.org/users/dorkster).
 - Elf death — "[11 male human pain...](https://opengameart.org/content/11-male-human-paindeath-sounds)" by [Michel Baradari](https://opengameart.org/users/qubodup).
 - Jottun attack — "[Monster Sound Effects Pack](https://opengameart.org/content/monster-sound-effects-pack)" by [Ogrebane](https://opengameart.org/users/ogrebane).
-- Mouse click — "[Angry Giant](http://soundbible.com/968-Angry-Giant.html)" by Mike Koenig.
+- Jottun death — "[Angry Giant](http://soundbible.com/968-Angry-Giant.html)" by Mike Koenig.
 
 ##### Misc
 - Mouse click — "[Click](https://opengameart.org/content/click)" by [Michel Baradari](https://opengameart.org/users/qubodup).
