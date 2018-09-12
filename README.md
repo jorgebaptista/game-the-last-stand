@@ -44,8 +44,9 @@
 
 - Julia Machado — Artist
 
-- Miguel Salgueiro ([@willow-games]()) - Project Manager
+- Miguel Salgueiro ([@willow-games]()) — Project Manager
 
+Check our credits file for more information on external assets used in this game - [here](https://github.com/Belz/game-the-last-stand/blob/master/CREDITS.md).
 <br>
 
 ## License
