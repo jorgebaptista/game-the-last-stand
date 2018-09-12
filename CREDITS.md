@@ -40,6 +40,6 @@ Here is the list of all the used assets not produced by us, alongside their auth
 
 - [Giorgi Beriashvili](https://github.com/0rganic) for helping us test and balance the waves of each avaiable level.
 
-- Rui Silva for helping out with a bug in the ballista reload. 
+- [Rui Silva](https://github.com/9ryex5) for helping out with a bug in the ballista reload. 
 
 - Everyone who supported us along the way, such as our families, friends and teachers.
