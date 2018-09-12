@@ -42,4 +42,4 @@ Here is the list of all the used assets not produced by us, alongside their auth
 
 - Rui Silva for helping out with a bug in the ballista reload. 
 
-- Everyone who supported us along the way, such as our families and friends.
+- Everyone who supported us along the way, such as our families, friends and teachers.
