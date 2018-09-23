@@ -23,7 +23,7 @@
 
 **Play the web version on Itch.io [here!](https://brainmotiongames.itch.io/the-last-stand)**
 
-*(Further development for this game is currently on hold with no plans for the future)*
+<b><i>This game was an academic project and currently has no plans for further development. We apologize and thank you all who gave our game a try! :)</b></i>
 
 
 <br>
